@@ -3,57 +3,61 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 // import { clearProductBySearch, getProductBySearch } from '../redux/features/searchSlice'
 import { DebounceInput } from 'react-debounce-input';
-// import { useNavigate } from 'react-router-dom';
-// import Spinner from "../components/Spinner"
+import { useProductBySearchQuery } from '../redux/productApi';
+import { useNavigate } from 'react-router-dom';
+import Spinner from "../components/Spinner"
+import { ProductsProps } from '../types';
 
 const Header = () => {
+  const [query, setQuery] = useState("")
+  const [skip, setSkip] = useState(true)
+  const { data: productBySearch, isLoading } = useProductBySearchQuery(query, { skip: skip });
+
   // const { cart } = useSelector(state => state.cartSlice)
   // const { productBySearch, loading } = useSelector(state => state.searchSlice)
   // const dispatch = useDispatch()
-  // let navigate = useNavigate();
-  const [query, setQuery] = useState("")
+  const navigate = useNavigate();
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
-      setQuery(e.target.value)
-      if (query.length === 0) {
-          // dispatch(clearProductBySearch())
-      }
+    setQuery(e.target.value)
   }
 
-  // useEffect(() => {
-  //     if (query.length > 2) {
-  //         dispatch(getProductBySearch(query))
-  //     }
-  // }, [query])
+  useEffect(() => {
+    if (query.length > 2) {
+      setSkip(false)
+    } else {
+      setSkip(true)
+    }
+  }, [query])
 
-  function submitSearch() {
-      // const id = productBySearch[0].id
-      // dispatch(clearProductBySearch())
-      // setQuery("")
-      // return navigate(`/products/${id}`);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (query.trim().length > 2) {
+      const id = productBySearch !== undefined && productBySearch[0].id
+      setQuery("")
+      return navigate(`/products/${id}`);
+    }
   }
 
-  // function directedFunc(id) {
-  //     dispatch(clearProductBySearch())
-  //     setQuery("")
-  //     return navigate(`/products/${id}`);
-  // }
+  function handleNavigate(id: number) {
+    setSkip(true)
+    setQuery("")
+    return navigate(`/products/${id}`);
+  }
 
   // const totalQuantity = cart.reduce((acc, element) => {
   //     return acc + element.count
   // }, 0)
- const productBySearch= []
- const loading = false
- 
+
   return (
     <header id="header">
       <div className="container">
         <nav className="navbar">
           <Link className="nav-logo" to="/">
-            <img src="img/logo.png" alt="Texnomart logo" />
+            <img src="/img/logo.png" alt="Texnomart logo" />
           </Link>
           <div className="nav-form">
-            <div className='search-holder'>
+            <form onSubmit={handleSubmit} className='search-holder'>
               <DebounceInput
                 type="text"
                 onChange={handleSearch}
@@ -62,26 +66,25 @@ const Header = () => {
                 placeholder="Axtar..." />
               <button
                 type="button"
-                className='search-btn'
-                onClick={submitSearch}>
+                className='search-btn'>
                 Axtar
               </button>
 
-              {/* {loading ? <Spinner /> : ""} */}
-            </div>
+              {isLoading ? <Spinner /> : ""}
+            </form>
             <div className={query.length > 2 ? "search-results active" : "search-results"}>
               <ul>
-                {productBySearch.length === 0 && !loading ? <li className='no-result'>Məhsul tapılmadı.</li> : null}
+                {productBySearch?.length === 0 && !isLoading ? <li className='no-result'>Məhsul tapılmadı.</li> : null}
 
-                {productBySearch.map((product) => {
+                {productBySearch?.map((item: ProductsProps) => {
                   return (
-                    <li key={product.id}>
-                      <button className='directed-btn' onClick={() => directedFunc(product.id)}>
+                    <li key={item.id}>
+                      <button className='directed-btn' onClick={() => handleNavigate(item.id)}>
                         <div className="product-image">
-                          <img className="front" src={product.img} />
+                          <img className="front" src={item.img} />
                         </div>
                         <div className="product-data">
-                          <h3>{product.name}</h3>
+                          <h3>{item.name}</h3>
                           <div className="product-price-box">
                             <span className="price">
                               <span className="in-price">
@@ -89,7 +92,7 @@ const Header = () => {
                                 <span className="amount">
                                   <del>
                                     <span className="amount">
-                                      <bdi>{product.price}&nbsp;$</bdi>
+                                      <bdi>{item.price}&nbsp;$</bdi>
                                     </span>
                                   </del>
                                 </span>
@@ -97,7 +100,7 @@ const Header = () => {
                               <span className="in-parts">
                                 <span className="amount-title"><small>Hissə-hissə ödəniş</small></span>
                                 <span className="amount">12 ay
-                                  <strong>{(product.price / 12).toFixed(2)}</strong>
+                                  <strong>{(item.price / 12).toFixed(2)}</strong>
                                   <span className="aznb">$</span>
                                 </span>
                               </span>
@@ -136,9 +139,9 @@ const Header = () => {
                 <path d="M19,7H16V6A4,4,0,0,0,8,6V7H5A1,1,0,0,0,4,8V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V8A1,1,0,0,0,19,7ZM10,6a2,2,0,0,1,4,0V7H10Zm8,13a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V9H8v1a1,1,0,0,0,2,0V9h4v1a1,1,0,0,0,2,0V9h2Z"></path>
               </svg>
               <span className="item-count">
-               {/* { totalQuantity } */}
+                {/* { totalQuantity } */}
                 0
-                </span> 
+              </span>
             </Link>
             <Link to="/" className="log-in">
               <i className="far fa-user"></i>

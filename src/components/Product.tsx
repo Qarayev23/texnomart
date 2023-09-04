@@ -3,7 +3,7 @@ import { ProductsProps } from '../types'
 // import { useDispatch } from 'react-redux'
 // import { addToCart } from '../redux/features/cartSlice'
 
-const Product = ({product}: {product: ProductsProps}) => {
+const Product = ({product}: {product: ProductsProps }) => {
     // const dispatch = useDispatch()
     
     return (

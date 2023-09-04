@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
 import Spinner from '../components/Spinner';
@@ -15,20 +15,13 @@ const ProductDetail = () => {
   // const { product, loading } = useSelector(state => state.productSlice)
   // const dispatch = useDispatch()
 
-  useEffect(() => {
-    setTimeout(() => {
-      activeRef.current.click()
-    }, 1000);
-  }, [id])
 
-  const [monthlyPayment, setMonthlyPayment] = useState(0)
+  const [monthlyPayment, setMonthlyPayment] = useState(product?.price !== undefined ? (product?.price / 6).toFixed(2) : 0)
   const [active, setActive] = useState(1);
-  const activeRef = useRef<HTMLButtonElement>();
 
-  function monthlyPaymentFunc(e: React.ChangeEvent<HTMLButtonElement>, price: number, index: number) {
-    const month = Number(e.target.getAttribute('data-value'));
-    const result = (price / month).toFixed(2)
-    setMonthlyPayment(Number(result))
+  function handleCreditCalculator(month: number, index: number) {
+    const result = product?.price !== undefined ? (product?.price / month).toFixed(2) : 0
+    setMonthlyPayment(result)
     setActive(index);
   }
 
@@ -56,23 +49,19 @@ const ProductDetail = () => {
                 <span className='product-detail-calc-text'>Aylıq ödəniş:&nbsp;{monthlyPayment}&nbsp;$</span>
                 <div className="calc-list-inner-class">
                   <button
-                    onClick={(e) => monthlyPaymentFunc(e, product?.price, 1)}
+                    onClick={() => handleCreditCalculator(6, 1)}
                     className={active === 1 ? "month active" : "month"}
-                    data-value="6"
-                    id="month-active"
-                    ref={activeRef}>
+                  >
                     6 ay
                   </button>
                   <button
-                    // onClick={(e) => monthlyPaymentFunc(e, product?.price, 2)}
-                    className={active === 2 ? "month active" : "month"}
-                    data-value="9">
+                    onClick={() => handleCreditCalculator(9, 2)}
+                    className={active === 2 ? "month active" : "month"} >
                     9 ay
                   </button>
                   <button
-                    //  onClick={(e) => monthlyPaymentFunc(e, product?.price, 3)}
-                    className={active === 3 ? "month active" : "month"}
-                    data-value="12">
+                    onClick={() => handleCreditCalculator(12, 3)}
+                    className={active === 3 ? "month active" : "month"}>
                     12 ay
                   </button>
                 </div>
@@ -87,26 +76,28 @@ const ProductDetail = () => {
           </div>
           <div className='product-detail-right'>
             <table className='product-detail-table'>
-              <tr>
-                <th>Brend</th>
-                <td>{product?.brand}</td>
-              </tr>
-              <tr>
-                <th>Adı</th>
-                <td>{product?.name}</td>
-              </tr>
-              <tr>
-                <th>Qiymət</th>
-                <td>{product?.price} $</td>
-              </tr>
-              <tr>
-                <th>Daxili yaddaş</th>
-                <td>{product?.memory} GB</td>
-              </tr>
-              <tr>
-                <th>Operativ yaddaş</th>
-                <td>{product?.ram} GB</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <th>Brend</th>
+                  <td>{product?.brand}</td>
+                </tr>
+                <tr>
+                  <th>Adı</th>
+                  <td>{product?.name}</td>
+                </tr>
+                <tr>
+                  <th>Qiymət</th>
+                  <td>{product?.price} $</td>
+                </tr>
+                <tr>
+                  <th>Daxili yaddaş</th>
+                  <td>{product?.memory} GB</td>
+                </tr>
+                <tr>
+                  <th>Operativ yaddaş</th>
+                  <td>{product?.ram} GB</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
