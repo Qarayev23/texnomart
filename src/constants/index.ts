@@ -54,3 +54,18 @@ export const filterData = {
         },
     ]
 }
+
+export const monthlyPaymentBtns = [
+    {
+        label: "6 ay",
+        value: "sixMonths"
+    },
+    {
+        label: "9 ay",
+        value: "nineMonths"
+    },
+    {
+        label: "12 ay",
+        value: "twelveMonths"
+    }
+]

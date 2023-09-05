@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
 import { ProductsProps } from '../types'
-// import { useDispatch } from 'react-redux'
-// import { addToCart } from '../redux/features/cartSlice'
+import { addToCart } from '../redux/features/cartSlice'
+import { useAppDispatch } from "../redux/hooks";
+const Product = ({ product }: { product: ProductsProps }) => {
+    const dispatch = useAppDispatch()
 
-const Product = ({product}: {product: ProductsProps }) => {
-    // const dispatch = useDispatch()
-    
     return (
         <div className="product">
             <Link to={`/products/${product.id}`} className="product-img">
@@ -22,7 +21,7 @@ const Product = ({product}: {product: ProductsProps }) => {
                     <span>12ay <b>{(product.price / 12).toFixed(2)}$</b></span>
                 </div>
             </div>
-            {/* <button onClick={() => dispatch(addToCart(product))}>Səbətə at</button> */}
+            <button onClick={() => dispatch(addToCart(product))}>Səbətə at</button>
         </div>
     )
 }

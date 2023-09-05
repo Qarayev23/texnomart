@@ -1,28 +1,23 @@
-import { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react'
 import { useParams } from "react-router-dom";
 import Spinner from '../components/Spinner';
-// import { addToCart } from '../redux/features/cartSlice';
-// import { getProduct } from '../redux/features/productSlice';
+import { addToCart } from '../redux/features/cartSlice';
 import { useProductQuery } from '../redux/productApi';
+import { useAppDispatch } from '../redux/hooks';
+import { monthlyPaymentBtns } from '../constants';
+
 type Params = {
   id: string;
 };
+
 const ProductDetail = () => {
   const { id } = useParams<Params>();
   const { data: product, isLoading } = useProductQuery(id!);
+  const dispatch = useAppDispatch()
+  const [month, setMonth] = useState("sixMonths");
 
-  // const { product, loading } = useSelector(state => state.productSlice)
-  // const dispatch = useDispatch()
-
-
-  const [monthlyPayment, setMonthlyPayment] = useState(product?.price !== undefined ? (product?.price / 6).toFixed(2) : 0)
-  const [active, setActive] = useState(1);
-
-  function handleCreditCalculator(month: number, index: number) {
-    const result = product?.price !== undefined ? (product?.price / month).toFixed(2) : 0
-    setMonthlyPayment(result)
-    setActive(index);
+  function handleCreditCalculator(monthParam: string) {
+    setMonth(monthParam);
   }
 
   if (isLoading) {
@@ -46,29 +41,20 @@ const ProductDetail = () => {
               <span className='product-detail-price'>{product?.price} $</span>
               <div className='product-detail-calc'>
                 <span className='product-detail-calc-title'>Kredit kalkulyatoru</span>
-                <span className='product-detail-calc-text'>Aylıq ödəniş:&nbsp;{monthlyPayment}&nbsp;$</span>
+                <span className='product-detail-calc-text'>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;$</span>
                 <div className="calc-list-inner-class">
-                  <button
-                    onClick={() => handleCreditCalculator(6, 1)}
-                    className={active === 1 ? "month active" : "month"}
-                  >
-                    6 ay
-                  </button>
-                  <button
-                    onClick={() => handleCreditCalculator(9, 2)}
-                    className={active === 2 ? "month active" : "month"} >
-                    9 ay
-                  </button>
-                  <button
-                    onClick={() => handleCreditCalculator(12, 3)}
-                    className={active === 3 ? "month active" : "month"}>
-                    12 ay
-                  </button>
+                  {monthlyPaymentBtns.map((item, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleCreditCalculator(item.value)}
+                      className={month === item.value ? "month active" : "month"}>
+                      {item.label}
+                    </button>
+                  ))}
                 </div>
                 <button
                   className='add-basket-btn'
-                // onClick={() => dispatch(addToCart(product))}
-                >
+                  onClick={() => dispatch(addToCart(product!))} >
                   Səbətə at
                 </button>
               </div>

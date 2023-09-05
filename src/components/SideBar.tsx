@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import capitalizeFirstLetter from "../utils/capitalizeFirstLetter"
-import {filterData} from "../../src/filterData"
 
 //import Nouislider from "nouislider-react"
-import "nouislider/distribute/nouislider.css"
+// import "nouislider/distribute/nouislider.css"
+import capitalizeFirstLetter from '../utils'
+import { filterData } from '../constants'
 const SideBar = ({ handleSidebar, openSidebar, limit }) => {
 
  
