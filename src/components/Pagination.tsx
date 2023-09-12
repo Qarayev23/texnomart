@@ -1,11 +1,5 @@
 import Pagination from 'rc-pagination';
-
-interface PaginationProps {
-  changePage: (selected: number) => void
-  productCount: number
-  currentPage: number
-  limit: number
-}
+import { PaginationProps } from '../types';
 
 const PaginationComp = ({changePage, productCount, currentPage, limit}: PaginationProps) => {
     return ( 

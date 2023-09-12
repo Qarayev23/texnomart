@@ -510,7 +510,8 @@ header {
   background: black !important;
 }
 
-.noUi-base, .noUi-connects {
+.noUi-base,
+.noUi-connects {
   height: 1px !important;
 }
 
@@ -578,12 +579,8 @@ header {
   color: #fff;
   font-size: 16px;
   line-height: 28px;
-  text-align: center;
-}
-
-.open-sidebar i {
-  font-size: 14px;
-  margin-right: 5px;
+  align-items: center;
+  gap: 5px;
 }
 
 .close-sidebar {
@@ -708,13 +705,13 @@ header {
     transition: right 0.3s;
   }
 
-  .sidebar.active {
+  .backdrop.active .sidebar {
     box-shadow: -2px 0 49px -6px rgb(0 0 0 / 20%);
     right: 0;
   }
 
   .open-sidebar {
-    display: block;
+    display: flex;
   }
 
   .products-content-top {
@@ -727,7 +724,7 @@ header {
     font-size: 16px;
   }
 
-  .products-not-found .open-sidebar{
+  .products-not-found .open-sidebar {
     margin-top: 20px;
   }
 
@@ -755,12 +752,11 @@ header {
     z-index: 999999;
     background: rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in;
-    cursor: pointer;
   }
 
   .backdrop.active {
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: initial;
   }
 
   .wrapper {
@@ -1032,6 +1028,8 @@ footer {
   align-items: center;
   position: relative;
   padding-right: 120px;
+  margin-top: 20px;
+  gap: 20px;
 }
 
 .cart-item-right>div {
@@ -1095,11 +1093,14 @@ footer {
 .go-to-store {
   background-color: var(--dark-red);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.go-to-store i {
-  padding-right: 10px;
-  font-size: 18px;
+.go-to-store svg {
+  font-size: 20px;
 }
 
 .clean-cart,
@@ -1157,18 +1158,13 @@ footer {
   .cart-item-left {
     flex-direction: column;
     width: 100%;
+    gap: 20px;
   }
 
   .cart-item-right {
     flex-direction: column;
     width: initial;
     padding-right: 0;
-  }
-
-  .cart-item-right>div,
-  .cart-item-left>div {
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   .cart-name p {
@@ -1180,7 +1176,7 @@ footer {
   }
 
   .cart-remove {
-    bottom: -1px;
+    bottom: -4x;
     right: -8px;
   }
 

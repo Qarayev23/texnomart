@@ -7,7 +7,12 @@ export const productsApi = createApi({
     tagTypes: ['Products'],
     endpoints: (builder) => ({
         products: builder.query<RootProductsProps, string>({
-            query: (q) => `products${q}`,
+            query: (q) => {
+                q.includes("&brand=all") && (q = q.replace("&brand=all", ""))
+                q.includes("&memory=all") && (q = q.replace("&memory=all", ""))
+                q.includes("&ram=all") && (q = q.replace("&ram=all", ""))
+                return `products${q}`
+            },
             transformResponse(apiResponse: ProductsProps[], meta): RootProductsProps {
                 return { apiResponse, totalCount: Number(meta?.response?.headers.get('X-Total-Count')) }
             }

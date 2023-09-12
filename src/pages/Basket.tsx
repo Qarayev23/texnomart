@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { increase, decrease, remove, clearBaket } from '../redux/features/cartSlice'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
+import { FaLongArrowAltLeft, FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 
 const Basket = () => {
     const dispatch = useAppDispatch()
@@ -89,7 +89,7 @@ const Basket = () => {
                     </div>
                     <div className="cart-footer">
                         <Link to="/" className="go-to-store">
-                            <i className="fas fa-long-arrow-alt-left"></i>
+                        <FaLongArrowAltLeft />
                             Mağazaya keç
                         </Link>
                         {cart.length > 0 ?
@@ -112,7 +112,7 @@ const Basket = () => {
                                     <span>{totalPrice}$</span>
                                 </li>
                             </ul>
-                            <a href="#" className="pay-cart">Kartla ödə</a>
+                            <button className="pay-cart">Kartla ödə</button>
                         </div>
                         : ""
                     }

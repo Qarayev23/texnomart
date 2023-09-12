@@ -6,8 +6,8 @@ import Product from './Product'
 import { useProductsQuery } from '../redux/productApi';
 import Spinner from './Spinner';
 import PaginationComp from './Pagination';
-import { convertIntObj } from '../utils';
 import SideBar from './SideBar';
+import { FaFilter } from 'react-icons/fa';
 
 const Products = () => {
     const limit = 8;
@@ -18,57 +18,49 @@ const Products = () => {
         { value: 'desc', label: 'Bahadan ucuza' }
     ]
     let location = useLocation();
+    const [openSidebar, setOpenSidebar] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [currentPage, setCurrentPage] = useState(Number(searchParams.get("_page")) || 1);
     const [value, setValue] = useState(searchParams.get("_order") === "asc" && options[1] || searchParams.get("_order") === "desc" && options[2] || options[0])
     const { data, isLoading, isFetching } = useProductsQuery(location.search === "" ? `?_page=${currentPage}&_limit=${limit}` : location.search);
-    // `?_page=${currentPage}&_limit=${limit}&_order=${value.value}&_sort=${sort}`
     const products = data?.apiResponse;
     const productCount = data?.totalCount!;
     const { cart } = useAppSelector(state => state.cartReducer)
 
     const changePage = (selected: number) => {
-        const formerSearchParams = Object.fromEntries([...searchParams])
-        const result = convertIntObj(formerSearchParams);
-        setSearchParams({ ...result, _page: selected, _limit: limit })
+        setSearchParams((prevParams) => {
+            prevParams.set("_page", selected.toString())
+            prevParams.set("_limit", limit.toString())
+            return prevParams
+        })
         setCurrentPage(selected)
     };
 
     function handleOnChange(newValue: SingleValue<{ value: string; label: string; }>) {
-        const formerSearchParams = Object.fromEntries([...searchParams])
-        const result = convertIntObj(formerSearchParams);
-        setSearchParams({ ...result, _order: newValue?.value!, _sort: sort, _limit: limit, _page: 1 })
+        setSearchParams((prevParams) => {
+            prevParams.set("_page", "1")
+            prevParams.set("_limit", limit.toString())
+            prevParams.set("_order", newValue?.value!)
+            prevParams.set("_sort", sort)
+            return prevParams
+        })
         setValue(newValue!)
         setCurrentPage(1)
     }
 
     useEffect(() => {
-        // if (searchParams.get("_page")) {
-        //     setCurrentPage(Number(searchParams.get("_page")))
-        //     setSkip(false)
-        // } 
         if (location.search === "") {
             setCurrentPage(1)
+            setValue(options[0])
         }
-        // else if (searchParams.get("_order") === "asc") {
-        //     setValue(options[1])
-        // } else if (searchParams.get("_order") === "desc") {
-        //     setValue(options[2])
-        // }
-        // else {
-        //         dispatch(getProducts(location.search))
-        //     }
-        // setSkip(false)
     }, [location])
 
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cart))
     }, [cart])
 
-    const [openSidebar, setOpenSidebar] = useState(true)
 
     const handleSidebar = () => {
-        document.querySelector(".backdrop").classList.toggle("active")
         setOpenSidebar(!openSidebar)
     }
 
@@ -85,6 +77,7 @@ const Products = () => {
                             openSidebar={openSidebar}
                             handleSidebar={handleSidebar}
                             limit={limit}
+                            setCurrentPage={setCurrentPage}
                         />
                     </div>
                     <div className='products-right'>
@@ -103,7 +96,7 @@ const Products = () => {
                                                 onChange={handleOnChange}
                                                 isSearchable={false} />
                                             <button className="open-sidebar" onClick={handleSidebar}>
-                                                <i className="fa fa-filter" aria-hidden="true"></i>
+                                                <FaFilter />
                                                 Filter
                                             </button>
                                         </div>
@@ -111,7 +104,7 @@ const Products = () => {
                                     <div className="products-not-found">
                                         Seçiminizə uyğun məhsul tapılmadı.
                                         <button className="open-sidebar" onClick={handleSidebar}>
-                                            <i className="fa fa-filter" aria-hidden="true"></i>
+                                            <FaFilter />
                                             Filter
                                         </button>
                                     </div>
@@ -127,7 +120,8 @@ const Products = () => {
                                     changePage={changePage}
                                     productCount={productCount}
                                     currentPage={currentPage}
-                                    limit={limit} />}
+                                    limit={limit} />
+                            }
                         </div>
                     </div>
                 </div>

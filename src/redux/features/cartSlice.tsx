@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { CartProps, ProductsProps } from "../../types";
 
 const cartState = localStorage.getItem("cartItems")

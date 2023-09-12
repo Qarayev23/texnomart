@@ -2,11 +2,11 @@ export const filterData = {
     brand: [
         {
             name: 'brand',
-            value: "samsung"
+            value: "samsung",
         },
         {
             name: 'brand',
-            value: "xiaomi"
+            value: "xiaomi",
         },
     ],
     memory: [

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ProductsProps } from '../types'
 import { addToCart } from '../redux/features/cartSlice'
 import { useAppDispatch } from "../redux/hooks";
+
 const Product = ({ product }: { product: ProductsProps }) => {
     const dispatch = useAppDispatch()
 

@@ -38,3 +38,22 @@ export interface ProductDetailProps {
 export interface MonthlyPayment {
   [key: string]: number
 }
+
+export interface CheckboxProps {
+  item: { name: string, value: string | number },
+  filterProducts: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export interface CheckboxComponentProps {
+  limit: number, setCurrentPage:
+  React.Dispatch<React.SetStateAction<number>>
+  openSidebar: boolean
+  handleSidebar: () => void
+}
+
+export interface PaginationProps {
+  changePage: (selected: number) => void
+  productCount: number
+  currentPage: number
+  limit: number
+}
