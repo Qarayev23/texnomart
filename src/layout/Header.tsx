@@ -85,7 +85,7 @@ const Header = () => {
                                 <span className="amount">
                                   <del>
                                     <span className="amount">
-                                      <bdi>{item.price}&nbsp;$</bdi>
+                                      <bdi>{item.price}&nbsp;M</bdi>
                                     </span>
                                   </del>
                                 </span>
@@ -94,7 +94,7 @@ const Header = () => {
                                 <span className="amount-title"><small>Hissə-hissə ödəniş</small></span>
                                 <span className="amount">12 ay
                                   <strong>{(item.price / 12).toFixed(2)}</strong>
-                                  <span className="aznb">$</span>
+                                  <span className="aznb">M</span>
                                 </span>
                               </span>
                             </span>

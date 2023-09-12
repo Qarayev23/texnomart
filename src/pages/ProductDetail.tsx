@@ -38,10 +38,10 @@ const ProductDetail = () => {
               <img src={product?.img} alt='' />
             </div>
             <div className='product-detail-info'>
-              <span className='product-detail-price'>{product?.price} $</span>
+              <span className='product-detail-price'>{product?.price} M</span>
               <div className='product-detail-calc'>
                 <span className='product-detail-calc-title'>Kredit kalkulyatoru</span>
-                <span className='product-detail-calc-text'>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;$</span>
+                <span className='product-detail-calc-text'>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;M</span>
                 <div className="calc-list-inner-class">
                   {monthlyPaymentBtns.map((item, index) => (
                     <button
@@ -73,7 +73,7 @@ const ProductDetail = () => {
                 </tr>
                 <tr>
                   <th>Qiymət</th>
-                  <td>{product?.price} $</td>
+                  <td>{product?.price} M</td>
                 </tr>
                 <tr>
                   <th>Daxili yaddaş</th>

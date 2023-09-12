@@ -62,7 +62,7 @@ const Basket = () => {
                                     <div className="cart-item-right">
                                         <div className="cart-price">
                                             <span className="mob-screen">Qiymət:</span>
-                                            <span>{item.price}$</span>
+                                            <span>{item.price}M</span>
                                         </div>
                                         <div className="cart-quantity">
                                             <button type="button" className="minus-btn" onClick={() => dispatch(decrease(item.id))}>
@@ -75,7 +75,7 @@ const Basket = () => {
                                         </div>
                                         <div className="cart-total">
                                             <span className="mob-screen">Ümumi:</span>
-                                            <span>{amount}$</span>
+                                            <span>{amount}M</span>
                                         </div>
                                         <div className="cart-remove">
                                             <button onClick={() => dispatch(remove(item.id))}>
@@ -109,7 +109,7 @@ const Basket = () => {
                                 </li>
                                 <li>
                                     <span>Ümumi məbləğ</span>
-                                    <span>{totalPrice}$</span>
+                                    <span>{totalPrice}M</span>
                                 </li>
                             </ul>
                             <button className="pay-cart">Kartla ödə</button>

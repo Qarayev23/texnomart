@@ -15,11 +15,11 @@ const Product = ({ product }: { product: ProductsProps }) => {
             <div className="product-footer">
                 <div className="product-price">
                     <span className="small">Qiymət</span>
-                    <b>{product.price}$</b>
+                    <b>{product.price}M</b>
                 </div>
                 <div className="product-payment">
                     <span className="small">Hissə-hissə ödəniş</span>
-                    <span>12ay <b>{(product.price / 12).toFixed(2)}$</b></span>
+                    <span>12ay <b>{(product.price / 12).toFixed(2)}M</b></span>
                 </div>
             </div>
             <button onClick={() => dispatch(addToCart(product))}>Səbətə at</button>
