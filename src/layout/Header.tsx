@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from "../components/Spinner"
 import { ProductsProps } from '../types';
 import { useAppSelector } from '../redux/hooks';
-import { FaRegHeart, FaRegUser } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 
 const Header = () => {
   const [query, setQuery] = useState("")
