@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useParams } from "react-router-dom";
-import Spinner from '../components/Spinner';
-import { addToCart } from '../redux/features/cartSlice';
-import { useProductQuery } from '../redux/productApi';
-import { useAppDispatch } from '../redux/hooks';
-import { monthlyPaymentBtns } from '../constants';
+import Spinner from '../../components/Spinner';
+import { addToCart } from '../../redux/features/cartSlice';
+import { useProductQuery } from '../../redux/productApi';
+import { useAppDispatch } from '../../redux/hooks';
+import { monthlyPaymentBtns } from '../../constants';
+import './productDetail.scss';
 
 type Params = {
   id: string;
@@ -25,24 +26,22 @@ const ProductDetail = () => {
   }
 
   return (
-    <section className='product-detail'>
-      <div className='container'>
-        <div className='product-detail-header'>
-          <h3 className='product-detail-title'>
-            {product?.name}
-          </h3>
-        </div>
-        <div className='product-detail-body'>
-          <div className='product-detail-left'>
-            <div className='product-detail-img'>
-              <img src={product?.img} alt='' />
+    <section className='productDetail'>
+      <div className='g-container'>
+        <h3 className='productDetail__title'>
+          {product?.name}
+        </h3>
+        <div className='productDetail__content'>
+          <div className='productDetail__left'>
+            <div className='productDetail__img'>
+              <img src={product?.img} alt={product?.name} />
             </div>
-            <div className='product-detail-info'>
-              <span className='product-detail-price'>{product?.price} M</span>
-              <div className='product-detail-calc'>
-                <span className='product-detail-calc-title'>Kredit kalkulyatoru</span>
-                <span className='product-detail-calc-text'>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;M</span>
-                <div className="calc-list-inner-class">
+            <div className='productDetail__info'>
+              <span className='productDetail__price'>{product?.price} M</span>
+              <div className='productDetail__calc'>
+                <span className='productDetail__calc__title'>Kredit kalkulyatoru</span>
+                <span className='productDetail__calc__text'>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;M</span>
+                <div className="productDetail__calc__btn">
                   {monthlyPaymentBtns.map((item, index) => (
                     <button
                       key={index}
@@ -60,8 +59,8 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-          <div className='product-detail-right'>
-            <table className='product-detail-table'>
+          <div className='productDetail__right'>
+            <table className='productDetail__table'>
               <tbody>
                 <tr>
                   <th>Brend</th>

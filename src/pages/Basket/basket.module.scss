@@ -1,0 +1,247 @@
+@import '../../assets/style/utilities/index.scss';
+
+.basketPage {
+    &__title {
+        padding: rem(50) 0;
+        font-size: rem(48);
+        text-align: center;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        background-color: $light-gray;
+        padding: rem(15) rem(150);
+
+        &__left {
+            width: 50%;
+
+            h3 {
+                @include font(25, 700);
+            }
+        }
+
+        &__right {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__title {
+            @include font(14, 700);
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: rem(30);
+        border-bottom: 1px solid #d6d6d6;
+
+        &__left {
+            width: 50%;
+            display: flex;
+            align-items: center;
+        }
+
+        &__img {
+            img {
+                width: rem(100);
+            }
+        }
+
+        &__name {
+            h4 {
+                color: #06c;
+                padding-left: rem(30);
+            }
+        }
+
+        &__right {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding-right: rem(120);
+            margin-top: rem(20);
+            gap: rem(20);
+
+            .mobScreen {
+                display: none;
+            }
+
+            .minusBtn,
+            .plusBtn,
+            .count {
+                display: inline-block;
+                border: 1px solid #f1f1f1;
+                color: #ccc;
+                background-color: transparent;
+                padding: rem(8) rem(10);
+                text-align: center;
+                height: rem(33);
+            }
+
+            .count {
+                width: rem(50);
+                color: black;
+            }
+        }
+
+        &__remove {
+            position: absolute;
+            right: 0;
+
+            button {
+                background: transparent;
+                font-size: rem(16);
+                color: $dark-gray;
+                transition: 0.3s;
+
+                &:hover {
+                    color: $dark-red;
+                }
+            }
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: rem(20);
+    }
+
+    .cleanBasketBtn,
+    .goToStoreBtn,
+    .paymentBtn {
+        display: inline-block;
+        padding: 0 rem(25);
+        height: rem(50);
+        line-height: rem(50);
+        text-align: center;
+        border-radius: rem(5);
+    }
+
+    .goToStoreBtn {
+        background-color: $dark-red;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(8);
+
+        &:hover {
+            background-color: darken($dark-red, 10%);
+        }
+
+        svg {
+            font-size: rem(20);
+        }
+    }
+
+    .cleanBasketBtn,
+    .paymentBtn {
+        border: 1px solid #7f7f7f;
+        color: black;
+        font-weight: bold;
+        background-color: transparent;
+
+        &:hover {
+            background-color: darken(white, 10%);
+        }
+    }
+
+    .paymentBtn {
+        display: block;
+        width: rem(170);
+        margin-left: auto;
+    }
+
+    &__totals {
+        width: rem(450);
+        margin-left: auto;
+        margin-top: rem(40);
+
+        h3 {
+            font-weight: bold;
+            padding-bottom: rem(10);
+            border-bottom: 1px solid $dark-gray;
+        }
+
+        ul {
+            padding-top: rem(20);
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: rem(30);
+            }
+        }
+    }
+
+    &__empty {
+        background-color: $light-gray;
+        padding: rem(15);
+        border-top: rem(3) solid #1e85be;
+    }
+
+    @include breakpoint-max($desktop-sm-width) {
+        &__header {
+            display: none;
+        }
+
+        &__item {
+            flex-direction: column;
+            padding: rem(10);
+
+            &__left {
+                flex-direction: column;
+                width: 100%;
+                gap: rem(20);
+            }
+
+            &__right {
+                flex-direction: column;
+                width: initial;
+                padding-right: 0;
+
+                .mobScreen {
+                    display: inline-block;
+                    padding-right: 5px;
+                    color: #999;
+                }
+            }
+
+            &__name {
+                h4 {
+                    padding-left: 0;
+                }
+            }
+
+            &__total {
+                margin-left: rem(-20);
+            }
+
+            &__remove {
+                bottom: rem(-2);
+                right: rem(-15);
+            }
+        }
+
+        &__totals {
+            width: 100%;
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        &__footer {
+            flex-direction: column;
+        }
+
+        .cleanBasketBtn {
+            margin-top: 15px;
+        }
+    }
+}

@@ -28,3 +28,12 @@
         }
     }
 }
+
+.wrapper {
+    display: flex;
+    gap: rem(25);
+
+    @include breakpoint-max($desktop-sm-width) {
+        gap: 0;
+    }
+}

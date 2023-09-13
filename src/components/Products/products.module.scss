@@ -1,0 +1,103 @@
+@import '../../assets/style/utilities/index.scss';
+
+.products {
+    &__content {
+        width: 100%;
+
+        &__top {
+            background-color: $light-gray;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: rem(12) rem(15);
+            margin-bottom: rem(40);
+
+            &__filter {
+                display: flex;
+                align-items: center;
+                gap: rem(20);
+            }
+        }
+    }
+
+    .openSidebar {
+        position: relative;
+        display: none;
+        padding: rem(3) rem(15);
+        border: 0;
+        outline: 0;
+        box-shadow: none;
+        background: #007aff;
+        color: #fff;
+        @include font(16, 400, 28);
+        align-items: center;
+        gap: rem(5);
+    }
+
+    &__notFound {
+        color: $dark-red;
+        font-weight: bold;
+        font-size: rem(18);
+        width: 100%;
+        padding: rem(10) 0;
+    }
+
+    &__found {
+        font-size: rem(15);
+        color: $dark-gray;
+
+        span {
+            color: black;
+            font-weight: bold;
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: rem(50) 0;
+    }
+
+    @include breakpoint-max($desktop-width) {
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @include breakpoint-max($desktop-sm-width) {
+        .openSidebar {
+            display: flex;
+        }
+
+        &__content {
+            &__top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: rem(20);
+
+                &__filter {
+                    width: 100%;
+
+                    .css-b62m3t-container {
+                        width: initial;
+                        flex: 1;
+                    }
+                }
+            }
+        }
+
+        &__notFound {
+            font-size: rem(16);
+
+            .openSidebar {
+                margin-top: rem(20);
+            }
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        &__list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}

@@ -48,6 +48,10 @@
             color: white;
             font-weight: bold;
             border-radius: 0 rem(5) rem(5) 0;
+
+            &:hover {
+                background-color: darken($dark-red, 10%);
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 //import Nouislider from "nouislider-react"
 // import "nouislider/distribute/nouislider.css"
@@ -59,15 +59,14 @@ const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar }: Checkbox
   // };
 
   return (
-    <div className={openSidebar ? 'backdrop active' : 'backdrop'}>
-      <div className="sidebar">
-        <button className="close-sidebar" onClick={handleSidebar}>Filteri bağla</button>
-
-        <div className='sidebar-inner'>
-          {/* <div className='filter-row'>
-          <h4>Qiymət</h4>
-          <div className='range-slide'>
-            <div className='range-slide-inputs'>
+    <div>
+      <div className={openSidebar ? `${styles.sidebar} ${styles.active}` : `${styles.sidebar}`}>
+        <button className={styles.sidebar__close} onClick={handleSidebar}>Filteri bağla</button>
+        <div className={styles.filter}>
+          {/* <div className={styles.filter__row}>
+          <h4 className={styles.filter__title}>Qiymət</h4>
+          <div className={styles.range-slide}>
+            <div className={styles.range-slide-inputs}>
               <input type='number' value={startPrice} onChange={(e) => setStartPrice(e.target.value)} />
               <span>-</span>
               <input type='number' value={endPrice} onChange={(e) => setendPrice(e.target.value)}/>
@@ -85,33 +84,33 @@ const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar }: Checkbox
           </div>
         </div> */}
 
-          <div className='filter-row'>
-            <h4>Model</h4>
-            <ul className='filter-list'>
+          <div className={styles.filter__row}>
+            <h4 className={styles.filter__title}>Model</h4>
+            <ul className={styles.filter__list}>
               {filterData["brand"].map(((item, index) => (
-                <li className='filter-item' key={index}>
+                <li className={styles.filter__item} key={index}>
                   <Checkbox item={item} filterProducts={filterProducts} />
                 </li>
               )))}
             </ul>
           </div>
 
-          <div className='filter-row'>
-            <h4>Daxili yaddaş</h4>
-            <ul className='filter-list'>
+          <div className={styles.filter__row}>
+            <h4 className={styles.filter__title}>Daxili yaddaş</h4>
+            <ul className={styles.filter__list}>
               {filterData["memory"].map(((item, index) => (
-                <li className='filter-item' key={index}>
+                <li className={styles.filter__item} key={index}>
                   <Checkbox item={item} filterProducts={filterProducts} />
                 </li>
               )))}
             </ul>
           </div>
 
-          <div className='filter-row'>
-            <h4>Operativ yaddaş</h4>
-            <ul className='filter-list'>
+          <div className={styles.filter__row}>
+            <h4 className={styles.filter__title}>Operativ yaddaş</h4>
+            <ul className={styles.filter__list}>
               {filterData["ram"].map(((item, index) => (
-                <li className='filter-item' key={index}>
+                <li className={styles.filter__item} key={index}>
                   <Checkbox item={item} filterProducts={filterProducts} />
                 </li>
               )))}
@@ -119,7 +118,9 @@ const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar }: Checkbox
           </div>
         </div>
       </div>
-    </div >
+
+      <div className={openSidebar ? `${styles.backdrop} ${styles.active}` : `${styles.backdrop}`} onClick={handleSidebar}></div>
+    </div>
   )
 }
 

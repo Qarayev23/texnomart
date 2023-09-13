@@ -55,13 +55,13 @@
 
         img {
             width: rem(120);
-            margin-bottom: rem(-5);
         }
     }
 
     &__carts {
         display: flex;
         gap: rem(15);
+        align-items: center;
 
         img {
             width: rem(60);

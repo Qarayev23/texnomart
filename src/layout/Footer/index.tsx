@@ -1,5 +1,4 @@
 import { FaCreditCard, FaRegComments, FaRocket, FaSyncAlt } from "react-icons/fa"
-import { Link } from "react-router-dom"
 import styles from './footer.module.scss';
 
 const Footer = () => {

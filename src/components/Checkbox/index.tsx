@@ -1,14 +1,15 @@
-import { CheckboxProps } from '../types'
-import { capitalizeFirstLetter } from '../utils'
+import { CheckboxProps } from '../../types'
+import { capitalizeFirstLetter } from '../../utils'
 
 const Checkbox = ({ item, filterProducts }: CheckboxProps) => {
     return (
         <>
-            <label>{typeof item.value === 'string' ? capitalizeFirstLetter(item.value) : `${item.value} GB`}</label>
+            <label htmlFor={`${item.value.toString()}-${item.name}`}>{typeof item.value === 'string' ? capitalizeFirstLetter(item.value) : `${item.value} GB`}</label>
             <input
                 type='checkbox'
                 className='check-box'
                 name={item.name}
+                id={`${item.value.toString()}-${item.name}`}
                 value={item.value}
                 onChange={filterProducts}
             />

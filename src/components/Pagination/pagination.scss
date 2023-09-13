@@ -1,0 +1,92 @@
+@import '../../assets/style/utilities/index.scss';
+
+.rc-pagination {
+  text-align: center;
+  padding: 0;
+  border: 0;
+  margin-top: rem(50);
+
+  li {
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+
+      a,
+      button {
+        opacity: 1;
+        background-color: $dark-red;
+        color: white;
+      }
+    }
+
+    a,
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 rem(2);
+      padding: 0 rem(5);
+      min-width: rem(40);
+      background: #f4f4f4;
+      color: #444;
+      text-decoration: none;
+      outline: none;
+      font-size: rem(14);
+      height: rem(32);
+      opacity: 0.6;
+      transition: all 0.3s;
+      border-radius: rem(3);
+      position: relative;
+    }
+  }
+
+  &-item-active {
+    a {
+      opacity: 1 !important;
+      background-color: $dark-red !important;
+      color: white !important;
+    }
+  }
+
+  &-prev,
+  &-next {
+    button {
+      color: rgba(0, 0, 0, 0.85);
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+
+  &-next {
+    button {
+      &::before {
+        content: '›';
+        transform: scale(2) translateY(-1px);
+        display: block;
+      }
+    }
+  }
+
+  &-prev {
+    button {
+      &::after {
+        content: '‹';
+        transform: scale(2) translateY(-1px);
+        display: block;
+      }
+    }
+  }
+
+  &-disabled {
+    button {
+      color: rgba(0, 0, 0, 0.3) !important;
+      background: #f4f4f4 !important;
+      cursor: initial !important;
+    }
+  }
+}
