@@ -1,13 +1,14 @@
 import { useState } from 'react'
+import styles from './info.module.scss';
 
 const Info = () => {
     const [show, setShow] = useState(false)
 
     return (
-        <section className="info">
-            <div className="container">
-                <h3>Mobil telefonlar</h3>
-                <p className={show ? "show" : ""}>
+        <section className={styles.info}>
+            <div className="g-container">
+                <h3 className={styles.info__title}>Mobil telefonlar</h3>
+                <p className={show ? `${styles.info__text} show` : styles.info__text}>
                     Məşhur brend smartfonlar üçün “Texnomart”a müraciət etmək ən doğrusudur. Mağazamızda ən son telefon
                     modelləri ilə tanış
                     olaraq onları sərfəli qiymətə əldə edə bilərsiniz. Müasir dövrdə telefonlardan yalnız zənglər üçün

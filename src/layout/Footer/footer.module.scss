@@ -1,0 +1,101 @@
+@import '../../assets/style/utilities/index.scss';
+
+.footer {
+    background-color: $dark;
+    margin-top: rem(50);
+
+    &__info {
+        padding: rem(50) 0;
+        border-bottom: 1px solid #d33;
+
+        &__list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            max-width: 200px;
+            gap: rem(20);
+
+            svg {
+                color: $dark-red;
+                font-size: rem(40);
+            }
+        }
+
+        &__title {
+            font-size: rem(18);
+            margin-bottom: rem(5);
+            color: white;
+        }
+
+        &__text {
+            @include font(14, 400, 18);
+            color: white;
+        }
+    }
+
+    &__bottom {
+        padding: rem(30) 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__copyright {
+        display: flex;
+        align-items: center;
+
+        p {
+            font-size: rem(15);
+            color: white;
+        }
+
+        img {
+            width: rem(120);
+            margin-bottom: rem(-5);
+        }
+    }
+
+    &__carts {
+        display: flex;
+        gap: rem(15);
+
+        img {
+            width: rem(60);
+        }
+    }
+
+    @include breakpoint-max($desktop-sm-width) {
+        &__info {
+            &__list {
+                flex-wrap: wrap;
+                gap: rem(40) 0;
+            }
+
+            &__item {
+                width: 50%;
+                max-width: initial;
+            }
+        }
+    }
+
+    @include breakpoint-max($mobile-width) {
+        &__info {
+            &__item {
+                width: 100%;
+            }
+        }
+
+        &__bottom {
+            padding: rem(10) 0;
+            flex-direction: column;
+        }
+
+        &__carts {
+            margin-top: rem(10);
+        }
+    }
+}

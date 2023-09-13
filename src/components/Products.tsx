@@ -6,7 +6,7 @@ import Product from './Product'
 import { useProductsQuery } from '../redux/productApi';
 import Spinner from './Spinner';
 import PaginationComp from './Pagination';
-import SideBar from './SideBar';
+import SideBar from './Sidebar';
 import { FaFilter } from 'react-icons/fa';
 
 const Products = () => {
@@ -65,12 +65,12 @@ const Products = () => {
     }
 
     if (isLoading || isFetching) {
-        return <Spinner />;
+        return <Spinner />
     }
 
     return (
         <section className="products">
-            <div className="container">
+            <div className="g-container">
                 <div className='wrapper'>
                     <div className='products-left'>
                         <SideBar

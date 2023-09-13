@@ -4,6 +4,8 @@ import App from './App.tsx'
 import './assets/css/main.css'
 import { Provider } from 'react-redux'
 import { store } from './redux/store.tsx'
+import "./index.css"
+import  "./assets/style/main.scss"
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

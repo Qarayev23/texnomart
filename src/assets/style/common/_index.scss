@@ -1,0 +1,30 @@
+.g-container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: calc(100% - #{rem(35)} * 2);
+
+    @include breakpoint-max($desktop-width) {
+        max-width: calc(100% - #{rem(17.5)} * 2);
+    }
+
+    @include breakpoint-max($tablet-width) {
+        max-width: calc(100% - #{rem(15)} * 2);
+    }
+}
+
+.spinner {
+    text-align: center;
+
+    img {
+        width: rem(300);
+    }
+
+    &.search__spinner {
+        position: absolute;
+        right: rem(100);
+
+        img {
+            width: rem(50);
+        }
+    }
+}

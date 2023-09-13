@@ -25,7 +25,7 @@ const Basket = () => {
 
     return (
         <section className="cart-area">
-            <div className="container">
+            <div className="g-container">
                 <div className="cart-content">
                     <h1>Səbət</h1>
                     {cart.length > 0 ?

@@ -2,9 +2,10 @@ import { useEffect} from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 //import Nouislider from "nouislider-react"
 // import "nouislider/distribute/nouislider.css"
-import { filterData } from '../constants'
-import Checkbox from './Checkbox'
-import { CheckboxComponentProps } from '../types'
+import { filterData } from '../../constants'
+import Checkbox from '../Checkbox'
+import { CheckboxComponentProps } from '../../types'
+import styles from './sidebar.module.scss';
 
 const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar }: CheckboxComponentProps) => {
   const navigate = useNavigate()

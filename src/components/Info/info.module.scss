@@ -1,0 +1,32 @@
+@import '../../assets/style/utilities/index.scss';
+
+.info {
+    margin: rem(50) 0;
+
+    &__title {
+        @include font(24, 700);
+    }
+
+    &__text {
+        margin-top: rem(25);
+        @include font(15, 400, 23);
+        color: $dark-gray;
+        text-align: justify;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+
+        &.show {
+            display: block;
+        }
+    }
+
+    button {
+        display: block;
+        margin-left: auto;
+        font-size: rem(15);
+        color: blue;
+        margin-top: rem(5);
+    }
+}
