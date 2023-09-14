@@ -1,0 +1,9 @@
+@import '../../assets/style/utilities/index.scss';
+
+.notFound {
+    img {
+        width: 100%;
+        height: rem(400);
+        object-fit: contain;
+    }
+}

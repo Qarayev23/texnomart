@@ -84,6 +84,16 @@
                 height: rem(33);
             }
 
+            .minusBtn,
+            .plusBtn {
+                transition: 0.3s;
+
+                &:hover {
+                    background: darken(white, 10%);
+                    color: gray;
+                }
+            }
+
             .count {
                 width: rem(50);
                 color: black;
@@ -111,52 +121,6 @@
         display: flex;
         justify-content: space-between;
         margin-top: rem(20);
-    }
-
-    .cleanBasketBtn,
-    .goToStoreBtn,
-    .paymentBtn {
-        display: inline-block;
-        padding: 0 rem(25);
-        height: rem(50);
-        line-height: rem(50);
-        text-align: center;
-        border-radius: rem(5);
-    }
-
-    .goToStoreBtn {
-        background-color: $dark-red;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: rem(8);
-
-        &:hover {
-            background-color: darken($dark-red, 10%);
-        }
-
-        svg {
-            font-size: rem(20);
-        }
-    }
-
-    .cleanBasketBtn,
-    .paymentBtn {
-        border: 1px solid #7f7f7f;
-        color: black;
-        font-weight: bold;
-        background-color: transparent;
-
-        &:hover {
-            background-color: darken(white, 10%);
-        }
-    }
-
-    .paymentBtn {
-        display: block;
-        width: rem(170);
-        margin-left: auto;
     }
 
     &__totals {
@@ -238,10 +202,7 @@
     @include breakpoint-max($tablet-width) {
         &__footer {
             flex-direction: column;
-        }
-
-        .cleanBasketBtn {
-            margin-top: 15px;
+            gap: rem(15);
         }
     }
 }

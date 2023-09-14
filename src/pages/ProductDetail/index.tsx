@@ -5,7 +5,7 @@ import { addToCart } from '../../redux/features/cartSlice';
 import { useProductQuery } from '../../redux/productApi';
 import { useAppDispatch } from '../../redux/hooks';
 import { monthlyPaymentBtns } from '../../constants';
-import './productDetail.scss';
+import styles from './productDetail.module.scss';
 
 type Params = {
   id: string;
@@ -26,41 +26,41 @@ const ProductDetail = () => {
   }
 
   return (
-    <section className='productDetail'>
-      <div className='g-container'>
-        <h3 className='productDetail__title'>
+    <section className={styles.productDetail}>
+      <div className="g-container">
+        <h3 className={styles.productDetail__title}>
           {product?.name}
         </h3>
-        <div className='productDetail__content'>
-          <div className='productDetail__left'>
-            <div className='productDetail__img'>
+        <div className={styles.productDetail__content}>
+          <div className={styles.productDetail__left}>
+            <div className={styles.productDetail__img}>
               <img src={product?.img} alt={product?.name} />
             </div>
-            <div className='productDetail__info'>
-              <span className='productDetail__price'>{product?.price} M</span>
-              <div className='productDetail__calc'>
-                <span className='productDetail__calc__title'>Kredit kalkulyatoru</span>
-                <span className='productDetail__calc__text'>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;M</span>
-                <div className="productDetail__calc__btn">
+            <div className={styles.productDetail__info}>
+              <span className={styles.productDetail__price}>{product?.price}M</span>
+              <div className={styles.productDetail__calc}>
+                <span className={styles.productDetail__calc__title}>Kredit kalkulyatoru</span>
+                <span className={styles.productDetail__calc__text}>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;M</span>
+                <div className={styles.productDetail__calc__btn}>
                   {monthlyPaymentBtns.map((item, index) => (
                     <button
                       key={index}
                       onClick={() => handleCreditCalculator(item.value)}
-                      className={month === item.value ? "month active" : "month"}>
+                      className={month === item.value ? `${styles.active}` : ""}>
                       {item.label}
                     </button>
                   ))}
                 </div>
                 <button
-                  className='add-basket-btn'
+                  className="g-button g-button--red"
                   onClick={() => dispatch(addToCart(product!))} >
                   Səbətə at
                 </button>
               </div>
             </div>
           </div>
-          <div className='productDetail__right'>
-            <table className='productDetail__table'>
+          <div className={styles.productDetail__right}>
+            <table className={styles.productDetail__table}>
               <tbody>
                 <tr>
                   <th>Brend</th>
@@ -88,7 +88,6 @@ const ProductDetail = () => {
         </div>
       </div>
     </section>
-
   )
 }
 

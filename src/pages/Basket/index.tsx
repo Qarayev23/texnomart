@@ -84,12 +84,12 @@ const Basket = () => {
                             })}
                     </ul>
                     <div className={styles.basketPage__footer}>
-                        <Link to="/" className={styles.goToStoreBtn}>
+                        <Link to="/" className="g-button g-button--red">
                             <FaLongArrowAltLeft />
                             Mağazaya keç
                         </Link>
                         {cart.length > 0 &&
-                            <button className={styles.cleanBasketBtn} onClick={() => dispatch(clearBaket())}>
+                            <button className="g-button g-button--white" onClick={() => dispatch(clearBaket())}>
                                 Səbəti təmizlə
                             </button>}
                     </div>
@@ -106,7 +106,7 @@ const Basket = () => {
                                     <span>{totalPrice}M</span>
                                 </li>
                             </ul>
-                            <button className={styles.paymentBtn}>Kartla ödə</button>
+                            <button className="g-button g-button--white ml-auto lg:ml-0">Kartla ödə</button>
                         </div>}
                 </div>
             </div>
