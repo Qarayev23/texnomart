@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams } from "react-router-dom";
+import { Params, useNavigate, useParams } from "react-router-dom";
 import Spinner from '../../components/Spinner';
 import { addToCart } from '../../redux/features/cartSlice';
 import { useProductQuery } from '../../redux/productApi';
@@ -7,13 +7,11 @@ import { useAppDispatch } from '../../redux/hooks';
 import { monthlyPaymentBtns } from '../../constants';
 import styles from './productDetail.module.scss';
 
-type Params = {
-  id: string;
-};
-
 const ProductDetail = () => {
   const { id } = useParams<Params>();
-  const { data: product, isLoading } = useProductQuery(id!);
+  const category = window.location.pathname.split('/')[1]
+  const navigate = useNavigate();
+  const { data: product, isLoading, isError } = useProductQuery({ category, id: id! });
   const dispatch = useAppDispatch()
   const [month, setMonth] = useState("sixMonths");
 
@@ -23,6 +21,10 @@ const ProductDetail = () => {
 
   if (isLoading) {
     return <Spinner />;
+  }
+
+  if (isError) {
+    navigate("/not-found")
   }
 
   return (
@@ -74,14 +76,26 @@ const ProductDetail = () => {
                   <th>Qiymət</th>
                   <td>{product?.price} M</td>
                 </tr>
-                <tr>
-                  <th>Daxili yaddaş</th>
-                  <td>{product?.memory} GB</td>
-                </tr>
-                <tr>
-                  <th>Operativ yaddaş</th>
-                  <td>{product?.ram} GB</td>
-                </tr>
+                {
+                  product?.memory && <tr>
+                    <th>Daxili yaddaş</th>
+                    <td>{product?.memory} GB</td>
+                  </tr>
+                }
+                {
+                  product?.ram &&
+                  <tr>
+                    <th>Operativ yaddaş</th>
+                    <td>{product?.ram} GB</td>
+                  </tr>
+                }
+                {
+                  product?.operationTime &&
+                  <tr>
+                    <th>İşləmə müddəti</th>
+                    <td>{product?.operationTime} saat</td>
+                  </tr>
+                }
               </tbody>
             </table>
           </div>

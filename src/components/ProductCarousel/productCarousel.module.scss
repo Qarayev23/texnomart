@@ -1,0 +1,10 @@
+@import '../../assets/style/utilities/index.scss';
+
+.productCarousel {
+    position: relative;
+    margin-top: rem(50);
+
+    &__swiper {
+        padding: 0 rem(1) rem(40) rem(1);
+    }
+}

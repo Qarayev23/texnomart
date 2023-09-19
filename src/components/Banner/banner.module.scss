@@ -1,0 +1,14 @@
+@import '../../assets/style/utilities/index.scss';
+
+.banner {
+    margin-top: rem(50);
+
+    &__content {
+        display: flex;
+        gap: rem(40);
+    }
+
+    @include breakpoint-max($tablet-width) {
+        margin-top: rem(30);
+    }
+}

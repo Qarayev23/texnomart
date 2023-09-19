@@ -1,10 +1,10 @@
 .g-container {
     width: 100%;
     margin: 0 auto;
-    max-width: calc(100% - #{rem(35)} * 2);
+    max-width: calc(100% - #{rem(45)} * 2);
 
     @include breakpoint-max($desktop-width) {
-        max-width: calc(100% - #{rem(17.5)} * 2);
+        max-width: calc(100% - #{rem(30)} * 2);
     }
 
     @include breakpoint-max($tablet-width) {
@@ -14,6 +14,7 @@
 
 .spinner {
     text-align: center;
+    width: 100%;
 
     img {
         width: rem(300);
@@ -21,20 +22,12 @@
 
     &.search__spinner {
         position: absolute;
-        right: rem(100);
 
         img {
+            position: absolute;
             width: rem(50);
+            right: rem(100);
         }
-    }
-}
-
-.wrapper {
-    display: flex;
-    gap: rem(25);
-
-    @include breakpoint-max($desktop-sm-width) {
-        gap: 0;
     }
 }
 
@@ -70,6 +63,80 @@
 
         &:hover {
             background-color: darken(white, 10%);
+        }
+    }
+}
+
+.carousel-headline {
+    margin-bottom: rem(25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.carousel-title {
+    @include font(23, 600);
+    color: $gray;
+    text-transform: uppercase;
+}
+
+.btn-all {
+    width: rem(260);
+    height: rem(48);
+    @include font(17, 500);
+    border-radius: rem(48);
+    background: $orange;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: $gray
+    }
+}
+
+.swiper {
+    height: 100%;
+
+    &-pagination {
+        justify-content: center !important;
+        bottom: 0 !important;
+
+        &-lock {
+            display: flex !important;
+        }
+
+        &-bullet {
+            width: rem(12) !important;
+            height: rem(12) !important;
+            background-color: #d9d9d9 !important;
+            opacity: 1 !important;
+
+            &:only-child {
+                display: flex !important;
+                justify-content: center !important;
+            }
+
+            &-active {
+                background-color: $gray !important;
+            }
+        }
+    }
+
+    &-button {
+        &-lock {
+            display: flex !important;
+        }
+
+        &-prev,
+        &-next {
+            color: $gray;
+            margin: 0;
+
+            &::after {
+                font-size: rem(20);
+            }
         }
     }
 }

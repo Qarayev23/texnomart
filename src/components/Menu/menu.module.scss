@@ -1,0 +1,46 @@
+@import '../../assets/style/utilities/index.scss';
+
+.menu {
+    width: rem(300);
+    border: 1px solid #dfdfdf;
+    border-radius: rem(5);
+    height: fit-content;
+    flex-shrink: 0;
+
+    &__item {
+        padding: rem(17);
+        border-bottom: 1px solid #d2d7da;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: #f1f1ff;
+        }
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: rem(20);
+
+        span {
+            color: $gray;
+        }
+
+        img {
+            width: rem(27);
+            height: rem(27);
+        }
+    }
+
+    @include breakpoint-max($desktop-width) {
+        width: rem(240);
+    }
+
+    @include breakpoint-max($desktop-sm-width) {
+       display: none;
+    }
+}

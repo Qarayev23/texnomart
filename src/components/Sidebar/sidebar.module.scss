@@ -62,7 +62,7 @@
   transition: all 0.3s ease-in;
 }
 
-@include breakpoint-max($desktop-sm-width) {
+@include breakpoint-max(1024) {
   .sidebar {
     position: fixed;
     top: 0;
@@ -118,8 +118,8 @@
 // .noUi-horizontal .noUi-handle {
 //   top: -7.5px !important;
 //   right: -7.5px !important;
-//   background: #373a36 !important;
-//   border-color: #373a36 !important;
+//   background: $gray !important;
+//   border-color: $gray !important;
 //   box-shadow: none !important;
 //   cursor: ew-resize !important;
 //   width: 15px !important;

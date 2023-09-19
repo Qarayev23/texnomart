@@ -1,15 +1,16 @@
 import { useEffect } from 'react'
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { Params, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 //import Nouislider from "nouislider-react"
 // import "nouislider/distribute/nouislider.css"
-import { filterData } from '../../constants'
+import { laptopsFilterItems, smartphoneFilterItems, smartwatchFilterItems } from '../../constants'
 import Checkbox from '../Checkbox'
-import { CheckboxComponentProps } from '../../types'
+import { SideBarProps } from '../../types'
 import styles from './sidebar.module.scss';
 
-const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar }: CheckboxComponentProps) => {
+const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar}: SideBarProps) => {
   const navigate = useNavigate()
-  let location = useLocation();
+  const location = useLocation();
+  const { category } = useParams<Params>();
   const [searchParams, setSearchParams] = useSearchParams()
 
   const filterProducts = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,41 +85,97 @@ const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar }: Checkbox
           </div>
         </div> */}
 
-          <div className={styles.filter__row}>
-            <h4 className={styles.filter__title}>Model</h4>
-            <ul className={styles.filter__list}>
-              {filterData["brand"].map(((item, index) => (
-                <li className={styles.filter__item} key={index}>
-                  <Checkbox item={item} filterProducts={filterProducts} />
-                </li>
-              )))}
-            </ul>
-          </div>
-
-          <div className={styles.filter__row}>
-            <h4 className={styles.filter__title}>Daxili yaddaş</h4>
-            <ul className={styles.filter__list}>
-              {filterData["memory"].map(((item, index) => (
-                <li className={styles.filter__item} key={index}>
-                  <Checkbox item={item} filterProducts={filterProducts} />
-                </li>
-              )))}
-            </ul>
-          </div>
-
-          <div className={styles.filter__row}>
-            <h4 className={styles.filter__title}>Operativ yaddaş</h4>
-            <ul className={styles.filter__list}>
-              {filterData["ram"].map(((item, index) => (
-                <li className={styles.filter__item} key={index}>
-                  <Checkbox item={item} filterProducts={filterProducts} />
-                </li>
-              )))}
-            </ul>
-          </div>
+          {category === "smartphones" &&
+            <>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>Model</h4>
+                <ul className={styles.filter__list}>
+                  {smartphoneFilterItems["brand"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>Daxili yaddaş</h4>
+                <ul className={styles.filter__list}>
+                  {smartphoneFilterItems["memory"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>Operativ yaddaş</h4>
+                <ul className={styles.filter__list}>
+                  {smartphoneFilterItems["ram"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+            </>}
+          {category === "smartwatches" &&
+            <>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>Brend</h4>
+                <ul className={styles.filter__list}>
+                  {smartwatchFilterItems["brand"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>İşləmə müddəti</h4>
+                <ul className={styles.filter__list}>
+                  {smartwatchFilterItems["operationTime"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+            </>}
+          {category === "laptops" &&
+            <>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>Brend</h4>
+                <ul className={styles.filter__list}>
+                  {laptopsFilterItems["brand"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>Operativ yaddaş</h4>
+                <ul className={styles.filter__list}>
+                  {laptopsFilterItems["ram"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+              <div className={styles.filter__row}>
+                <h4 className={styles.filter__title}>Daxili yaddaş</h4>
+                <ul className={styles.filter__list}>
+                  {laptopsFilterItems["memory"].map(((item, index) => (
+                    <li className={styles.filter__item} key={index}>
+                      <Checkbox item={item} filterProducts={filterProducts} />
+                    </li>
+                  )))}
+                </ul>
+              </div>
+            </>}
         </div>
       </div>
-
       <div className={openSidebar ? `${styles.backdrop} ${styles.active}` : `${styles.backdrop}`} onClick={handleSidebar}></div>
     </div>
   )

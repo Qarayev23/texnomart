@@ -50,7 +50,7 @@
         &__title {
             margin: 0 0 rem(20);
             @include font(18, 400);
-            color: #373a36;
+            color: $gray;
         }
 
         &__text {
@@ -93,7 +93,7 @@
                 padding: 0;
                 z-index: 1;
                 background: #fff;
-                border: 1px solid #373a36;
+                border: 1px solid $gray;
                 border-radius: 100%;
                 overflow: hidden;
                 @include font(13, 500);
@@ -101,7 +101,7 @@
                 height: rem(44);
                 text-align: center;
                 letter-spacing: -1px;
-                color: #373a36;
+                color: $gray;
                 transition: 0.3s ease;
 
                 &.active {
@@ -132,7 +132,7 @@
             border: 1px solid #707070;
             text-align: left;
             padding: rem(10);
-            color: #373a36;
+            color: $gray;
             font-size: rem(18);
             text-transform: capitalize;
         }

@@ -20,20 +20,6 @@
         }
     }
 
-    .openSidebar {
-        position: relative;
-        display: none;
-        padding: rem(3) rem(15);
-        border: 0;
-        outline: 0;
-        box-shadow: none;
-        background: #007aff;
-        color: #fff;
-        @include font(16, 400, 28);
-        align-items: center;
-        gap: rem(5);
-    }
-
     &__notFound {
         color: $dark-red;
         font-weight: bold;
@@ -64,7 +50,7 @@
         }
     }
 
-    @include breakpoint-max($desktop-sm-width) {
+    @include breakpoint-max(1024) {
         .openSidebar {
             display: flex;
         }
@@ -77,11 +63,6 @@
 
                 &__filter {
                     width: 100%;
-
-                    .css-b62m3t-container {
-                        width: initial;
-                        flex: 1;
-                    }
                 }
             }
         }
@@ -99,5 +80,23 @@
         &__list {
             grid-template-columns: repeat(2, 1fr);
         }
+    }
+}
+
+.openSidebar {
+    position: relative;
+    display: none;
+    padding: rem(3) rem(15);
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    background: #007aff;
+    color: #fff;
+    @include font(16, 400, 28);
+    align-items: center;
+    gap: rem(5);
+
+    @include breakpoint-max(1024) {
+        display: flex;
     }
 }

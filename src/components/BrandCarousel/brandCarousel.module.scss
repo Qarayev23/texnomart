@@ -1,0 +1,18 @@
+@import '../../assets/style/utilities/index.scss';
+
+.brandCarousel {
+    margin-top: rem(50);
+
+    &__item {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__img {
+        height: rem(80);
+    }
+
+    &__swiper {
+        padding-bottom: rem(40);
+    }
+}

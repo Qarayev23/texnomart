@@ -4,6 +4,8 @@ import Basket from "../pages/Basket";
 import NotFound from "../pages/NotFound";
 import ProductDetail from "../pages/ProductDetail";
 import Root from "../layout/Root";
+import Category from "../pages/Category";
+import BrandPage from "../pages/Brand";
 
 export const router = createBrowserRouter([
     {
@@ -23,8 +25,16 @@ export const router = createBrowserRouter([
                 element: <Basket />,
             },
             {
-                path: "products/:id",
+                path: "category/:category",
+                element: <Category />,
+            },
+            {
+                path: ":category/:id",
                 element: <ProductDetail />,
+            },
+            {
+                path: "product-brand/:brand",
+                element: <BrandPage />,
             },
         ],
     },

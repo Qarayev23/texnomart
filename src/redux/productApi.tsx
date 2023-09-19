@@ -6,19 +6,14 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: "https://texnomart-db-c49524c88c8a.herokuapp.com/" }),
     tagTypes: ['Products'],
     endpoints: (builder) => ({
-        products: builder.query<RootProductsProps, string>({
-            query: (q) => {
-                q.includes("&brand=all") && (q = q.replace("&brand=all", ""))
-                q.includes("&memory=all") && (q = q.replace("&memory=all", ""))
-                q.includes("&ram=all") && (q = q.replace("&ram=all", ""))
-                return `products${q}`
-            },
+        products: builder.query<RootProductsProps, { category: string | undefined, q: string }>({
+            query: ({ category, q }) => category + q,
             transformResponse(apiResponse: ProductsProps[], meta): RootProductsProps {
                 return { apiResponse, totalCount: Number(meta?.response?.headers.get('X-Total-Count')) }
             }
         }),
-        product: builder.query<ProductDetailProps, string>({
-            query: (id) => `products/${id}`,
+        product: builder.query<ProductDetailProps, { category: string | undefined, id: string }>({
+            query: ({ category, id }) => `${category}/${id}`,
             transformResponse: (response: ProductsProps) => {
                 return {
                     ...response, monthlyPayment: {

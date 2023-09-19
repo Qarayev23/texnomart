@@ -1,3 +1,5 @@
+import { SingleValue } from "react-select"
+
 export interface RootProductsProps {
   apiResponse: ProductsProps[],
   totalCount: number,
@@ -7,10 +9,11 @@ export interface ProductsProps {
   name: string
   brand: string
   img: string
-  ram: number
-  memory: number
+  ram?: number
+  memory?: number
   price: number
   id: number
+  operationTime?: number
 }
 
 export interface CartProps {
@@ -28,11 +31,12 @@ export interface ProductDetailProps {
   name: string
   brand: string
   img: string
-  ram: number
-  memory: number
+  ram?: number
+  memory?: number
   price: number
   id: number
   monthlyPayment: MonthlyPayment
+  operationTime?: number
 }
 
 export interface MonthlyPayment {
@@ -44,7 +48,7 @@ export interface CheckboxProps {
   filterProducts: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export interface CheckboxComponentProps {
+export interface SideBarProps {
   limit: number, setCurrentPage:
   React.Dispatch<React.SetStateAction<number>>
   openSidebar: boolean
@@ -56,4 +60,15 @@ export interface PaginationProps {
   productCount: number
   currentPage: number
   limit: number
+}
+
+export interface ProductsComponentProps {
+  products: ProductsProps[]
+  productCount: number
+  currentPage: number
+  limit: number
+  value: SingleValue<{ value: string; label: string; }>
+  handleOnChange: (newValue: SingleValue<{ value: string; label: string; }>) => void
+  handleSidebar?: () => void
+  options: { value: string, label: string }[]
 }
