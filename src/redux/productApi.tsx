@@ -9,7 +9,7 @@ export const productsApi = createApi({
         products: builder.query<RootProductsProps, { category: string | undefined, q: string }>({
             query: ({ category, q }) => category + q,
             transformResponse(apiResponse: ProductsProps[], meta): RootProductsProps {
-                return { apiResponse, totalCount: Number(meta?.response?.headers.get('X-Total-Count'))}
+                return { apiResponse, totalCount: Number(meta?.response?.headers.get('X-Total-Count')) }
             }
         }),
         product: builder.query<ProductDetailProps, { category: string | undefined, id: string }>({
@@ -24,14 +24,10 @@ export const productsApi = createApi({
                 }
             }
         }),
-        productBySearch: builder.query<ProductsProps[], string>({
-            query: (q) => `allProducts?q=${q}`,
-        }),
     }),
 })
 
 export const {
     useProductsQuery,
     useProductQuery,
-    useProductBySearchQuery
 } = productsApi;

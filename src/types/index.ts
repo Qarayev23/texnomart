@@ -5,7 +5,8 @@ export interface RootProductsProps {
   totalCount: number
 }
 
-export interface ProductsProps {
+export type ProductsProps = {
+  category: string
   name: string
   brand: string
   img: string
@@ -16,28 +17,12 @@ export interface ProductsProps {
   operationTime?: number
 }
 
-export interface CartProps {
-  brand: string
+export interface CartProps extends ProductsProps {
   count: number
-  id: number
-  img: string
-  memory?: number
-  name: string
-  price: number
-  ram?: number
-  operationTime?: number
 }
 
-export interface ProductDetailProps {
-  name: string
-  brand: string
-  img: string
-  ram?: number
-  memory?: number
-  price: number
-  id: number
+export interface ProductDetailProps extends ProductsProps {
   monthlyPayment: MonthlyPayment
-  operationTime?: number
 }
 
 export interface MonthlyPayment {

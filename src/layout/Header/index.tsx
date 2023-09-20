@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DebounceInput } from 'react-debounce-input';
-import { useProductBySearchQuery } from '../../redux/productApi';
+import { useProductsQuery } from '../../redux/productApi';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 import { FaRegUser } from 'react-icons/fa';
@@ -11,10 +11,10 @@ import Spinner from '../../components/Spinner';
 const Header = () => {
   const [query, setQuery] = useState("")
   const [skip, setSkip] = useState(true)
-  const { data: productBySearch, isLoading } = useProductBySearchQuery(query, { skip: skip });
+  const { data, isLoading } = useProductsQuery({ category: "allProducts?q=", q: query }, { skip: skip });
+  const products = data?.apiResponse
   const { cart } = useAppSelector(state => state.cartReducer)
   const navigate = useNavigate()
-  console.log(productBySearch);
 
   useEffect(() => {
     if (query.length > 2) {
@@ -27,16 +27,18 @@ const Header = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (query.trim().length > 2) {
-      const id = productBySearch !== undefined && productBySearch[0].id
+      const id = products !== undefined && products[0].id
+      const category = products !== undefined && products[0].category
+
       setQuery("")
-      return navigate(`/products/${id}`);
+      return navigate(`/${category}/${id}`);
     }
   }
 
-  function handleNavigate(id: number) {
+  function handleNavigate(id: number, category: string) {
     setSkip(true)
     setQuery("")
-    return navigate(`/products/${id}`);
+    return navigate(`/${category}/${id}`);
   }
 
   const totalQuantity = cart.reduce((acc, element) => {
@@ -68,10 +70,10 @@ const Header = () => {
             </form>
 
             <div className={query.length > 2 ? `${styles.search__results} ${styles.active}` : styles.search__results}>
-              {productBySearch?.length === 0 && !isLoading ? <li className={styles.no__result}>Məhsul tapılmadı.</li> : null}
+              {products?.length === 0 && !isLoading ? <li className={styles.no__result}>Məhsul tapılmadı.</li> : null}
 
-              {productBySearch?.map((item) => (
-                <button className={styles.directed__btn} onClick={() => handleNavigate(item.id)} key={item.id}>
+              {products?.map((item) => (
+                <button className={styles.directed__btn} onClick={() => handleNavigate(item.id, item.category)} key={item.id}>
                   <div className={styles.product__image}>
                     <img className={styles.front} src={item.img} />
                   </div>
