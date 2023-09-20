@@ -51,7 +51,7 @@
     }
 
     @include breakpoint-max(1024) {
-        .openSidebar {
+        .openFilterBar {
             display: flex;
         }
 
@@ -70,7 +70,7 @@
         &__notFound {
             font-size: rem(16);
 
-            .openSidebar {
+            .openFilterBar {
                 margin-top: rem(20);
             }
         }
@@ -79,11 +79,12 @@
     @include breakpoint-max($tablet-width) {
         &__list {
             grid-template-columns: repeat(2, 1fr);
+            gap: rem(25) 0;
         }
     }
 }
 
-.openSidebar {
+.openFilterBar {
     position: relative;
     display: none;
     padding: rem(3) rem(15);

@@ -3,8 +3,11 @@ import Product from '../Product'
 import { FaFilter } from 'react-icons/fa';
 import styles from './products.module.scss';
 import { ProductsComponentProps } from '../../types';
+import { useLocation } from 'react-router-dom';
 
-const Products = ({ products, productCount, currentPage, limit, value, handleSidebar, handleOnChange, options }: ProductsComponentProps) => {
+const Products = ({ products, productCount, currentPage, limit, value, handleFilterBar, handleOnChange, options }: ProductsComponentProps) => {
+    const location = useLocation()
+
     return (
         <div className={styles.products__content}>
             <div className={styles.products__content__top}>
@@ -21,18 +24,24 @@ const Products = ({ products, productCount, currentPage, limit, value, handleSid
                                 options={options}
                                 onChange={handleOnChange}
                                 isSearchable={false} />
-                            <button className={styles.openSidebar} onClick={handleSidebar}>
-                                <FaFilter />
-                                Filter
-                            </button>
+                            {
+                                location.pathname.split("/")[1] !== "product-brand" &&
+                                <button className={styles.openFilterBar} onClick={handleFilterBar}>
+                                    <FaFilter />
+                                    Filter
+                                </button>
+                            }
                         </div>
                     </> :
                     <div className={styles.products__notFound}>
                         Seçiminizə uyğun məhsul tapılmadı.
-                        <button className={styles.openSidebar} onClick={handleSidebar}>
-                            <FaFilter />
-                            Filter
-                        </button>
+                        {
+                            location.pathname.split("/")[1] !== "product-brand" &&
+                            <button className={styles.openFilterBar} onClick={handleFilterBar}>
+                                <FaFilter />
+                                Filter
+                            </button>
+                        }
                     </div>
                 }
             </div>

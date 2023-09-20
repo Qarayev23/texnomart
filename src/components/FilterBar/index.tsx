@@ -4,10 +4,10 @@ import { Params, useLocation, useNavigate, useParams, useSearchParams } from 're
 // import "nouislider/distribute/nouislider.css"
 import { laptopsFilterItems, smartphoneFilterItems, smartwatchFilterItems } from '../../constants'
 import Checkbox from '../Checkbox'
-import { SideBarProps } from '../../types'
-import styles from './sidebar.module.scss';
+import { FilterBarProps } from '../../types'
+import styles from './filterBar.module.scss';
 
-const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar}: SideBarProps) => {
+const FilterBar = ({ limit, setCurrentPage, openFilterBar, handleFilterBar}: FilterBarProps) => {
   const navigate = useNavigate()
   const location = useLocation();
   const { category } = useParams<Params>();
@@ -61,8 +61,8 @@ const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar}: SideBarPr
 
   return (
     <div>
-      <div className={openSidebar ? `${styles.sidebar} ${styles.active}` : `${styles.sidebar}`}>
-        <button className={styles.sidebar__close} onClick={handleSidebar}>Filteri bağla</button>
+      <div className={openFilterBar ? `${styles.filterBar} ${styles.active}` : `${styles.filterBar}`}>
+        <button className={styles.filterBar__close} onClick={handleFilterBar}>Filteri bağla</button>
         <div className={styles.filter}>
           {/* <div className={styles.filter__row}>
           <h4 className={styles.filter__title}>Qiymət</h4>
@@ -176,9 +176,9 @@ const SideBar = ({ limit, setCurrentPage, openSidebar, handleSidebar}: SideBarPr
             </>}
         </div>
       </div>
-      <div className={openSidebar ? `${styles.backdrop} ${styles.active}` : `${styles.backdrop}`} onClick={handleSidebar}></div>
+      <div className={openFilterBar ? `${styles.backdrop} ${styles.active}` : `${styles.backdrop}`} onClick={handleFilterBar}></div>
     </div>
   )
 }
 
-export default SideBar
+export default FilterBar

@@ -72,6 +72,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: rem(10);
 
     @include breakpoint-max($mobile-width){
         margin-bottom: rem(15);
@@ -105,7 +106,7 @@
     }
 
     @include breakpoint-max($mobile-width) {
-        padding: rem(0) rem(20);
+        padding: rem(0) rem(17);
         font-size: rem(14);
         height: rem(40);
     }

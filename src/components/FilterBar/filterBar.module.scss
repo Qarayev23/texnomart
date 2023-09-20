@@ -1,6 +1,6 @@
 @import '../../assets/style/utilities/index.scss';
 
-.sidebar {
+.filterBar {
   background-color: $light-gray;
   width: rem(275);
   overflow: auto;
@@ -63,7 +63,7 @@
 }
 
 @include breakpoint-max(1024) {
-  .sidebar {
+  .filterBar {
     position: fixed;
     top: 0;
     right: -105%;

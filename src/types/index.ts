@@ -49,11 +49,11 @@ export interface CheckboxProps {
   filterProducts: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export interface SideBarProps {
+export interface FilterBarProps {
   limit: number, setCurrentPage:
   React.Dispatch<React.SetStateAction<number>>
-  openSidebar: boolean
-  handleSidebar: () => void
+  openFilterBar: boolean
+  handleFilterBar: () => void
 }
 
 export interface PaginationProps {
@@ -70,6 +70,6 @@ export interface ProductsComponentProps {
   limit: number
   value: SingleValue<{ value: string; label: string; }>
   handleOnChange: (newValue: SingleValue<{ value: string; label: string; }>) => void
-  handleSidebar?: () => void
+  handleFilterBar?: () => void
   options: { value: string, label: string }[]
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Info from "../../components/Info";
 import Products from "../../components/Products";
-import SideBar from "../../components/Sidebar";
+import FilterBar from "../../components/FilterBar";
 import { Params, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useProductsQuery } from "../../redux/productApi";
 import { useAppSelector } from "../../redux/hooks";
@@ -20,7 +20,7 @@ const Category = () => {
     ]
     let location = useLocation();
     const navigate = useNavigate();
-    const [openSidebar, setOpenSidebar] = useState(false)
+    const [openFilterBar, setopenFilterBar] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [currentPage, setCurrentPage] = useState(Number(searchParams.get("_page")) || 1);
     const [value, setValue] = useState(searchParams.get("_order") === "asc" && options[1] || searchParams.get("_order") === "desc" && options[2] || options[0])
@@ -59,8 +59,8 @@ const Category = () => {
         localStorage.setItem("cartItems", JSON.stringify(cart))
     }, [cart])
 
-    const handleSidebar = () => {
-        setOpenSidebar(!openSidebar)
+    const handleFilterBar = () => {
+        setopenFilterBar(!openFilterBar)
     }
 
     if (isError) {
@@ -75,9 +75,9 @@ const Category = () => {
                     <div className='flex lg:gap-6 gap-0'>
                         {isLoading || isFetching ? <Spinner />
                             : <>
-                                <SideBar
-                                    openSidebar={openSidebar}
-                                    handleSidebar={handleSidebar}
+                                <FilterBar
+                                    openFilterBar={openFilterBar}
+                                    handleFilterBar={handleFilterBar}
                                     limit={limit}
                                     setCurrentPage={setCurrentPage}
                                 />
@@ -87,7 +87,7 @@ const Category = () => {
                                         productCount={productCount}
                                         currentPage={currentPage}
                                         limit={limit}
-                                        handleSidebar={handleSidebar}
+                                        handleFilterBar={handleFilterBar}
                                         value={value}
                                         handleOnChange={handleOnChange}
                                         options={options}

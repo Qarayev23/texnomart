@@ -15,11 +15,23 @@ const BarndCarousel = () => {
                 <Swiper
                     pagination={{ clickable: true }}
                     modules={[Pagination, Autoplay]}
-                    slidesPerView={5}
+                    slidesPerView={2}
+                    spaceBetween={20}
                     speed={1000}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
+                    }}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 3,
+                        },
+                        991: {
+                            slidesPerView: 4,
+                        },
+                        1200: {
+                            slidesPerView: 5,
+                        },
                     }}
                     className={styles.brandCarousel__swiper}
                 >
