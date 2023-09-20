@@ -1,8 +1,8 @@
 import { SingleValue } from "react-select"
 
 export interface RootProductsProps {
-  apiResponse: ProductsProps[],
-  totalCount: number,
+  apiResponse: ProductsProps[]
+  totalCount: number
 }
 
 export interface ProductsProps {
@@ -17,14 +17,15 @@ export interface ProductsProps {
 }
 
 export interface CartProps {
-  brand: string,
-  count: number,
-  id: number,
-  img: string,
-  memory: number,
-  name: string,
-  price: number,
-  ram: number,
+  brand: string
+  count: number
+  id: number
+  img: string
+  memory?: number
+  name: string
+  price: number
+  ram?: number
+  operationTime?: number
 }
 
 export interface ProductDetailProps {

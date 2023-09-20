@@ -84,7 +84,7 @@ const Basket = () => {
                                 })}
                         </ul>
                         <div className={styles.basketPage__footer}>
-                            <Link to="/" className="g-button g-button--red">
+                            <Link to="/category/smartphones" className="g-button g-button--red">
                                 <FaLongArrowAltLeft />
                                 Mağazaya keç
                             </Link>

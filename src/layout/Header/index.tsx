@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { DebounceInput } from 'react-debounce-input';
 import { useProductBySearchQuery } from '../../redux/productApi';
 import { useNavigate } from 'react-router-dom';
-import { ProductsProps } from '../../types';
 import { useAppSelector } from '../../redux/hooks';
 import { FaRegUser } from 'react-icons/fa';
 import styles from './header.module.scss';
@@ -69,7 +68,7 @@ const Header = () => {
             <div className={query.length > 2 ? `${styles.search__results} ${styles.active}` : styles.search__results}>
               {productBySearch?.length === 0 && !isLoading ? <li className={styles.no__result}>Məhsul tapılmadı.</li> : null}
 
-              {productBySearch?.map((item: ProductsProps) => (
+              {productBySearch?.map((item) => (
                 <button className={styles.directed__btn} onClick={() => handleNavigate(item.id)} key={item.id}>
                   <div className={styles.product__image}>
                     <img className={styles.front} src={item.img} />
