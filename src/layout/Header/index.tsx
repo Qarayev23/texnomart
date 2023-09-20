@@ -14,6 +14,7 @@ const Header = () => {
   const { data: productBySearch, isLoading } = useProductBySearchQuery(query, { skip: skip });
   const { cart } = useAppSelector(state => state.cartReducer)
   const navigate = useNavigate()
+  console.log(productBySearch);
 
   useEffect(() => {
     if (query.length > 2) {
@@ -65,6 +66,7 @@ const Header = () => {
 
               {isLoading && <Spinner classname="search__spinner" />}
             </form>
+
             <div className={query.length > 2 ? `${styles.search__results} ${styles.active}` : styles.search__results}>
               {productBySearch?.length === 0 && !isLoading ? <li className={styles.no__result}>Məhsul tapılmadı.</li> : null}
 
@@ -89,7 +91,7 @@ const Header = () => {
                         </span>
                         <span className={styles.in__parts}>
                           <span className={styles.amount__title}><small>Hissə-hissə ödəniş</small></span>
-                          <span className={styles.amount}>12 ay
+                          <span className={styles.amount}>12 ay&nbsp;
                             <strong>{(item.price / 12).toFixed(2)}</strong>
                             <span className={styles.aznb}>M</span>
                           </span>
@@ -101,6 +103,7 @@ const Header = () => {
               ))}
             </div>
           </div>
+
           <div className={styles.navbar__icons}>
             <Link to="/" className={`${styles.navbar__icons__item} ${styles.tel}`}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">

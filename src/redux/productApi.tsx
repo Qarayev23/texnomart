@@ -25,7 +25,7 @@ export const productsApi = createApi({
             }
         }),
         productBySearch: builder.query<ProductsProps[], string>({
-            query: (q) => `products?q=${q}`,
+            query: (q) => `allProducts?q=${q}`,
         }),
     }),
 })
