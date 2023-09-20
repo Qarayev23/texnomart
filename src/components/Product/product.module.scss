@@ -2,7 +2,7 @@
 
 .product {
     border: 1px solid rgba(0, 0, 0, 0.08);
-    padding: rem(20) rem(20) rem(10) rem(20);
+    padding: rem(15) rem(15) rem(10) rem(15);
     transition: 0.5s;
 
     &:hover {
@@ -21,7 +21,8 @@
 
     &__name {
         h4 {
-            @include font(14, 400, 18);
+            @include font(14, 700, 18);
+            letter-spacing: rem(-0.5);
             color: black;
             margin-bottom: rem(10);
         }
@@ -89,6 +90,8 @@
     }
 
     @include breakpoint-max($mobile-width) {
+        padding: rem(10);
+
         &__footer {
             flex-direction: column;
         }

@@ -72,16 +72,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include breakpoint-max($mobile-width){
+        margin-bottom: rem(15);
+    }
 }
 
 .carousel-title {
     @include font(23, 600);
     color: $gray;
     text-transform: uppercase;
+
+    @include breakpoint-max($mobile-width){
+        font-size: rem(18);
+    }
 }
 
 .btn-all {
-    width: rem(260);
     height: rem(48);
     @include font(17, 500);
     border-radius: rem(48);
@@ -90,9 +97,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    padding: rem(0) rem(50);
 
     &:hover {
         background: $gray
+    }
+
+    @include breakpoint-max($mobile-width) {
+        padding: rem(0) rem(20);
+        font-size: rem(14);
+        height: rem(40);
     }
 }
 

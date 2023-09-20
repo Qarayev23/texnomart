@@ -22,12 +22,13 @@ const ProductCarousel = ({ category, title }: { category: string, title: string 
                     pagination={{ clickable: true }}
                     modules={[Pagination]}
                     slidesPerView={2}
-                    spaceBetween={30}
                     speed={1000}
                     breakpoints={{
                         768: {
+                            slidesPerView: 3,
+                        },
+                        991: {
                             slidesPerView: 4,
-                            spaceBetween: 0
                         },
                         1200: {
                             slidesPerView: 5,
