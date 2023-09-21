@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { menuİtems } from "../../constants"
 import styles from './menu.module.scss';
 
-const Menu = ({visible}) => {
+const Menu = ({visible}: {visible?: boolean}) => {
     return (
         <ul className={`${visible ? `${styles.menu} ${styles.visible}` : styles.menu}`}>
             {menuİtems.map((item, index) => (
