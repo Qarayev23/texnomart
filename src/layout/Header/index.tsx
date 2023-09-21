@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { DebounceInput } from 'react-debounce-input';
 import { useProductsQuery } from '../../redux/productApi';
 import { useNavigate } from 'react-router-dom';
@@ -7,14 +7,18 @@ import { useAppSelector } from '../../redux/hooks';
 import { FaRegUser } from 'react-icons/fa';
 import styles from './header.module.scss';
 import Spinner from '../../components/Spinner';
+import SideBar from '../../components/Sidebar';
 
 const Header = () => {
   const [query, setQuery] = useState("")
   const [skip, setSkip] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth)
   const { data, isLoading } = useProductsQuery({ category: "allProducts?q=", q: query }, { skip: skip });
   const products = data?.apiResponse
   const { cart } = useAppSelector(state => state.cartReducer)
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     if (query.length > 2) {
@@ -45,6 +49,18 @@ const Header = () => {
     return acc + element.count
   }, 0)
 
+  const handleOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
+  window.onresize = () => {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location])
+
   return (
     <header className={styles.header}>
       <div className="g-container">
@@ -52,60 +68,69 @@ const Header = () => {
           <Link to="/" className={styles.navbar__logo} >
             <img src="/img/logo.png" alt="Texnomart logo" />
           </Link>
-          <div className={styles.search__holder}>
-            <form onSubmit={handleSubmit} className={styles.navbar__form}>
-              <DebounceInput
-                type="text"
-                onChange={(e) => setQuery(e.target.value)}
-                value={query}
-                debounceTimeout={500}
-                placeholder="Axtar..." />
-              <button
-                type="button"
-                className={styles.search__btn}>
-                Axtar
+          <div className={styles.navbar__holder}>
+            {
+              (location.pathname === "/" && width > 991) ? null :
+              <button className={styles.menu__icon} onClick={handleOpen}>
+                <span className={isOpen ? styles.open : ""}></span>
+                <span className={isOpen ? styles.open : ""}></span>
+                <span className={isOpen ? styles.open : ""}></span>
               </button>
-
-              {isLoading && <Spinner classname="search__spinner" />}
-            </form>
-
-            <div className={query.length > 2 ? `${styles.search__results} ${styles.active}` : styles.search__results}>
-              {products?.length === 0 && !isLoading ? <li className={styles.no__result}>Məhsul tapılmadı.</li> : null}
-
-              {products?.map((item) => (
-                <button className={styles.directed__btn} onClick={() => handleNavigate(item.id, item.category)} key={item.id}>
-                  <div className={styles.product__image}>
-                    <img className={styles.front} src={item.img} />
-                  </div>
-                  <div className={styles.product__data}>
-                    <h3>{item.name}</h3>
-                    <div className={styles.product__price__box}>
-                      <span className={styles.price}>
-                        <span className={styles.in__price}>
-                          <span className={styles.amount__title}><small>Qiymət</small></span>
-                          <span className={styles.amount}>
-                            <del>
-                              <span className={styles.amount}>
-                                <bdi>{item.price}&nbsp;M</bdi>
-                              </span>
-                            </del>
-                          </span>
-                        </span>
-                        <span className={styles.in__parts}>
-                          <span className={styles.amount__title}><small>Hissə-hissə ödəniş</small></span>
-                          <span className={styles.amount}>12 ay&nbsp;
-                            <strong>{(item.price / 12).toFixed(2)}</strong>
-                            <span className={styles.aznb}>M</span>
-                          </span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
+            }
+            <div className={styles.search__holder}>
+              <form onSubmit={handleSubmit} className={styles.navbar__form}>
+                <DebounceInput
+                  type="text"
+                  onChange={(e) => setQuery(e.target.value)}
+                  value={query}
+                  debounceTimeout={500}
+                  placeholder="Axtar..." />
+                <button
+                  type="button"
+                  className={styles.search__btn}>
+                  Axtar
                 </button>
-              ))}
+
+                {isLoading && <Spinner classname="search__spinner" />}
+              </form>
+
+              <div className={query.length > 2 ? `${styles.search__results} ${styles.active}` : styles.search__results}>
+                {products?.length === 0 && !isLoading ? <li className={styles.no__result}>Məhsul tapılmadı.</li> : null}
+
+                {products?.map((item) => (
+                  <button className={styles.directed__btn} onClick={() => handleNavigate(item.id, item.category)} key={item.id}>
+                    <div className={styles.product__image}>
+                      <img className={styles.front} src={item.img} />
+                    </div>
+                    <div className={styles.product__data}>
+                      <h3>{item.name}</h3>
+                      <div className={styles.product__price__box}>
+                        <span className={styles.price}>
+                          <span className={styles.in__price}>
+                            <span className={styles.amount__title}><small>Qiymət</small></span>
+                            <span className={styles.amount}>
+                              <del>
+                                <span className={styles.amount}>
+                                  <bdi>{item.price}&nbsp;M</bdi>
+                                </span>
+                              </del>
+                            </span>
+                          </span>
+                          <span className={styles.in__parts}>
+                            <span className={styles.amount__title}><small>Hissə-hissə ödəniş</small></span>
+                            <span className={styles.amount}>12 ay&nbsp;
+                              <strong>{(item.price / 12).toFixed(2)}</strong>
+                              <span className={styles.aznb}>M</span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-
           <div className={styles.navbar__icons}>
             <Link to="/" className={`${styles.navbar__icons__item} ${styles.tel}`}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -135,6 +160,7 @@ const Header = () => {
           </div>
         </nav>
       </div>
+      <SideBar isOpen={isOpen} handleOpen={handleOpen} />
     </header>
   )
 }

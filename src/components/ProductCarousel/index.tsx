@@ -39,7 +39,7 @@ const ProductCarousel = ({ category, title }: { category: string, title: string 
                     {
                         products?.map((product) => (
                             <SwiperSlide key={product.id}>
-                                <Product product={product} category={category} />
+                                <Product product={product} />
                             </SwiperSlide>
                         ))
                     }

@@ -62,7 +62,7 @@
   transition: all 0.3s ease-in;
 }
 
-@include breakpoint-max(1024) {
+@include breakpoint-max($desktop-sm-width) {
   .filterBar {
     position: fixed;
     top: 0;

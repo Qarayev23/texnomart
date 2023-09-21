@@ -5,7 +5,7 @@ import styles from './products.module.scss';
 import { ProductsComponentProps } from '../../types';
 import { useLocation } from 'react-router-dom';
 
-const Products = ({ products, productCount, currentPage, limit, value, handleFilterBar, handleOnChange, options }: ProductsComponentProps) => {
+const Products = ({ products, productCount, currentPage, limit, value, handleOpen, handleOnChange, options }: ProductsComponentProps) => {
     const location = useLocation()
 
     return (
@@ -26,7 +26,7 @@ const Products = ({ products, productCount, currentPage, limit, value, handleFil
                                 isSearchable={false} />
                             {
                                 location.pathname.split("/")[1] !== "product-brand" &&
-                                <button className={styles.openFilterBar} onClick={handleFilterBar}>
+                                <button className={styles.openFilterBar} onClick={handleOpen}>
                                     <FaFilter />
                                     Filter
                                 </button>
@@ -37,7 +37,7 @@ const Products = ({ products, productCount, currentPage, limit, value, handleFil
                         Seçiminizə uyğun məhsul tapılmadı.
                         {
                             location.pathname.split("/")[1] !== "product-brand" &&
-                            <button className={styles.openFilterBar} onClick={handleFilterBar}>
+                            <button className={styles.openFilterBar} onClick={handleOpen}>
                                 <FaFilter />
                                 Filter
                             </button>

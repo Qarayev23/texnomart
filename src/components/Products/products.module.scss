@@ -50,7 +50,7 @@
         }
     }
 
-    @include breakpoint-max(1024) {
+    @include breakpoint-max($desktop-sm-width) {
         .openFilterBar {
             display: flex;
         }
@@ -97,7 +97,7 @@
     align-items: center;
     gap: rem(5);
 
-    @include breakpoint-max(1024) {
+    @include breakpoint-max($desktop-sm-width) {
         display: flex;
     }
 }

@@ -1,0 +1,55 @@
+@import '../../assets/style/utilities/index.scss';
+
+.sideBar {
+    background-color: $light-gray;
+    width: rem(275);
+    overflow: auto;
+
+    &__close {
+        display: none;
+        width: 100%;
+        padding: rem(10) rem(15);
+        font-size: rem(16);
+        z-index: 1;
+        background: $dark-red;
+        color: #fff;
+    }
+}
+
+.backdrop {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in;
+}
+
+.sideBar {
+    position: fixed;
+    top: 0;
+    right: -105%;
+    width: 100%;
+    max-width: rem(300);
+    height: 100%;
+    z-index: 99;
+    transition: right 0.3s;
+
+    &.active {
+        box-shadow: -2px 0 49px -6px rgb(0 0 0 / 20%);
+        right: 0;
+    }
+
+    &__close {
+        display: block;
+    }
+}
+
+.backdrop.active {
+    opacity: 1;
+    pointer-events: initial;
+}

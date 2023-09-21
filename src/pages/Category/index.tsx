@@ -20,7 +20,7 @@ const Category = () => {
     ]
     let location = useLocation();
     const navigate = useNavigate();
-    const [openFilterBar, setopenFilterBar] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [currentPage, setCurrentPage] = useState(Number(searchParams.get("_page")) || 1);
     const [value, setValue] = useState(searchParams.get("_order") === "asc" && options[1] || searchParams.get("_order") === "desc" && options[2] || options[0])
@@ -59,8 +59,8 @@ const Category = () => {
         localStorage.setItem("cartItems", JSON.stringify(cart))
     }, [cart])
 
-    const handleFilterBar = () => {
-        setopenFilterBar(!openFilterBar)
+    const handleOpen = () => {
+        setIsOpen(!isOpen)
     }
 
     if (isError) {
@@ -76,8 +76,8 @@ const Category = () => {
                         {isLoading || isFetching ? <Spinner />
                             : <>
                                 <FilterBar
-                                    openFilterBar={openFilterBar}
-                                    handleFilterBar={handleFilterBar}
+                                    isOpen={isOpen}
+                                    handleOpen={handleOpen}
                                     limit={limit}
                                     setCurrentPage={setCurrentPage}
                                 />
@@ -87,7 +87,7 @@ const Category = () => {
                                         productCount={productCount}
                                         currentPage={currentPage}
                                         limit={limit}
-                                        handleFilterBar={handleFilterBar}
+                                        handleOpen={handleOpen}
                                         value={value}
                                         handleOnChange={handleOnChange}
                                         options={options}

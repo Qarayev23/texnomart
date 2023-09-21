@@ -137,6 +137,11 @@
             &-active {
                 background-color: $gray !important;
             }
+
+            @include breakpoint-max($mobile-width){
+                width: rem(10) !important;
+                height: rem(10) !important;
+            }
         }
     }
 

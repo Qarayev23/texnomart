@@ -15,4 +15,10 @@
     &__swiper {
         padding-bottom: rem(40);
     }
+
+    @include breakpoint-max($mobile-width) {
+        &__img {
+            height: rem(60);
+        }
+    }
 }

@@ -38,9 +38,17 @@
 
     @include breakpoint-max($desktop-width) {
         width: rem(240);
+
+        &.visible {
+            width: 100%;
+        }
     }
 
     @include breakpoint-max($desktop-sm-width) {
-       display: none;
+        display: none;
+
+        &.visible {
+            display: block !important;
+        }
     }
 }

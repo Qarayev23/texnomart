@@ -7,7 +7,7 @@ import Checkbox from '../Checkbox'
 import { FilterBarProps } from '../../types'
 import styles from './filterBar.module.scss';
 
-const FilterBar = ({ limit, setCurrentPage, openFilterBar, handleFilterBar}: FilterBarProps) => {
+const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen}: FilterBarProps) => {
   const navigate = useNavigate()
   const location = useLocation();
   const { category } = useParams<Params>();
@@ -61,8 +61,8 @@ const FilterBar = ({ limit, setCurrentPage, openFilterBar, handleFilterBar}: Fil
 
   return (
     <div>
-      <div className={openFilterBar ? `${styles.filterBar} ${styles.active}` : `${styles.filterBar}`}>
-        <button className={styles.filterBar__close} onClick={handleFilterBar}>Filteri bağla</button>
+      <div className={isOpen ? `${styles.filterBar} ${styles.active}` : `${styles.filterBar}`}>
+        <button className={styles.filterBar__close} onClick={handleOpen}>Bağla</button>
         <div className={styles.filter}>
           {/* <div className={styles.filter__row}>
           <h4 className={styles.filter__title}>Qiymət</h4>
@@ -176,7 +176,7 @@ const FilterBar = ({ limit, setCurrentPage, openFilterBar, handleFilterBar}: Fil
             </>}
         </div>
       </div>
-      <div className={openFilterBar ? `${styles.backdrop} ${styles.active}` : `${styles.backdrop}`} onClick={handleFilterBar}></div>
+      <div className={isOpen ? `${styles.backdrop} ${styles.active}` : `${styles.backdrop}`} onClick={handleOpen}></div>
     </div>
   )
 }
