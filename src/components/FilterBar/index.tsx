@@ -48,10 +48,6 @@ const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen, filterItems }: F
     }
   }, [searchParams])
 
-  type sortType = {
-    [key: string]: string
-  }
-
   // const minPrice = 0
   // const maxPrice = 5000
   // const [startPrice, setStartPrice] = useState(minPrice)
@@ -89,19 +85,17 @@ const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen, filterItems }: F
         </div> */}
           {
             filterItems?.map((filterItem, i) => {
-              console.log([...new Set(filterItem[1])].sort((a:any, b:any):any => a-b));
-              
               return <div className={styles.filter__row} key={i}>
                 <h4 className={styles.filter__title}>{setFiterTitle(filterItem[0])}</h4>
                 <ul className={styles.filter__list}>
-                  {[...new Set(filterItem[1])].map(((item, index) => (
+                  {[...new Set(filterItem[1])].sort((a:any, b:any):any => a-b).map(((item, index) => (
                     <li className={styles.filter__item} key={index}>
                       <Checkbox item={item} name={filterItem[0]} filterProducts={filterProducts} />
                     </li>
                   )))}
                 </ul>
               </div>
-})
+            })
           }
         </div>
       </div>
