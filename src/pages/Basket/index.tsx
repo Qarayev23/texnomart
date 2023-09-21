@@ -51,7 +51,7 @@ const Basket = () => {
                                                 <div className={styles.basketPage__item__img}>
                                                     <img src={item.img} alt={item.name} />
                                                 </div>
-                                                <Link to={`/products/${item.id}`} className={styles.basketPage__item__name}>
+                                                <Link to={`/${item.category}/${item.id}`} className={styles.basketPage__item__name}>
                                                     <h4>{item.name}</h4>
                                                 </Link>
                                             </div>

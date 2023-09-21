@@ -72,7 +72,7 @@
             color: white;
             position: relative;
 
-            &:first-of-type{
+            &:first-of-type {
                 transform: translateY(rem(2))
             }
         }
@@ -80,12 +80,6 @@
         .tel {
             span {
                 @include font(26, 700);
-            }
-        }
-
-        .register {
-            span {
-                @include font(15, 700);
             }
         }
 
@@ -160,7 +154,7 @@
         }
     }
 
-    .search__btn{
+    .search__btn {
         width: rem(80) !important;
     }
 }
@@ -181,6 +175,10 @@
     width: calc(100% - rem(100));
     transform: scaleX(0);
     z-index: 0;
+
+    @include breakpoint-max($mobile-width) {
+        width: calc(100% - rem(80));
+    }
 }
 
 .search__results.active {

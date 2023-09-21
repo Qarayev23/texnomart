@@ -39,7 +39,7 @@ const ProductDetail = () => {
               <img src={product?.img} alt={product?.name} />
             </div>
             <div className={styles.productDetail__info}>
-              <span className={styles.productDetail__price}>{product?.price}M</span>
+              <span className={styles.productDetail__price}>{product?.price} M</span>
               <div className={styles.productDetail__calc}>
                 <span className={styles.productDetail__calc__title}>Kredit kalkulyatoru</span>
                 <span className={styles.productDetail__calc__text}>Aylıq ödəniş:&nbsp;{product?.monthlyPayment?.[month]}&nbsp;M</span>

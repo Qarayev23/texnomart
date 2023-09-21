@@ -1,16 +1,15 @@
 import { useEffect } from 'react'
-import { Params, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 //import Nouislider from "nouislider-react"
 // import "nouislider/distribute/nouislider.css"
-import { laptopsFilterItems, smartphoneFilterItems, smartwatchFilterItems } from '../../constants'
 import Checkbox from '../Checkbox'
 import { FilterBarProps } from '../../types'
 import styles from './filterBar.module.scss';
+import { setFiterTitle } from '../../utils';
 
-const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen}: FilterBarProps) => {
+const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen, filterItems }: FilterBarProps) => {
   const navigate = useNavigate()
   const location = useLocation();
-  const { category } = useParams<Params>();
   const [searchParams, setSearchParams] = useSearchParams()
 
   const filterProducts = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,6 +48,10 @@ const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen}: FilterBarProps)
     }
   }, [searchParams])
 
+  type sortType = {
+    [key: string]: string
+  }
+
   // const minPrice = 0
   // const maxPrice = 5000
   // const [startPrice, setStartPrice] = useState(minPrice)
@@ -84,96 +87,22 @@ const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen}: FilterBarProps)
             />
           </div>
         </div> */}
-
-          {category === "smartphones" &&
-            <>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>Model</h4>
+          {
+            filterItems?.map((filterItem, i) => {
+              console.log([...new Set(filterItem[1])].sort((a:any, b:any):any => a-b));
+              
+              return <div className={styles.filter__row} key={i}>
+                <h4 className={styles.filter__title}>{setFiterTitle(filterItem[0])}</h4>
                 <ul className={styles.filter__list}>
-                  {smartphoneFilterItems["brand"].map(((item, index) => (
+                  {[...new Set(filterItem[1])].map(((item, index) => (
                     <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
+                      <Checkbox item={item} name={filterItem[0]} filterProducts={filterProducts} />
                     </li>
                   )))}
                 </ul>
               </div>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>Daxili yaddaş</h4>
-                <ul className={styles.filter__list}>
-                  {smartphoneFilterItems["memory"].map(((item, index) => (
-                    <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
-                    </li>
-                  )))}
-                </ul>
-              </div>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>Operativ yaddaş</h4>
-                <ul className={styles.filter__list}>
-                  {smartphoneFilterItems["ram"].map(((item, index) => (
-                    <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
-                    </li>
-                  )))}
-                </ul>
-              </div>
-            </>}
-          {category === "smartwatches" &&
-            <>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>Brend</h4>
-                <ul className={styles.filter__list}>
-                  {smartwatchFilterItems["brand"].map(((item, index) => (
-                    <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
-                    </li>
-                  )))}
-                </ul>
-              </div>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>İşləmə müddəti</h4>
-                <ul className={styles.filter__list}>
-                  {smartwatchFilterItems["operationTime"].map(((item, index) => (
-                    <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
-                    </li>
-                  )))}
-                </ul>
-              </div>
-            </>}
-          {category === "laptops" &&
-            <>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>Brend</h4>
-                <ul className={styles.filter__list}>
-                  {laptopsFilterItems["brand"].map(((item, index) => (
-                    <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
-                    </li>
-                  )))}
-                </ul>
-              </div>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>Operativ yaddaş</h4>
-                <ul className={styles.filter__list}>
-                  {laptopsFilterItems["ram"].map(((item, index) => (
-                    <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
-                    </li>
-                  )))}
-                </ul>
-              </div>
-              <div className={styles.filter__row}>
-                <h4 className={styles.filter__title}>Daxili yaddaş</h4>
-                <ul className={styles.filter__list}>
-                  {laptopsFilterItems["memory"].map(((item, index) => (
-                    <li className={styles.filter__item} key={index}>
-                      <Checkbox item={item} filterProducts={filterProducts} />
-                    </li>
-                  )))}
-                </ul>
-              </div>
-            </>}
+})
+          }
         </div>
       </div>
       <div className={isOpen ? `${styles.backdrop} ${styles.active}` : `${styles.backdrop}`} onClick={handleOpen}></div>

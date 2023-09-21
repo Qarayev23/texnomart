@@ -7,10 +7,6 @@ import { useLocation } from 'react-router-dom';
 
 const Products = ({ products, productCount, currentPage, limit, value, handleOpen, handleOnChange, options }: ProductsComponentProps) => {
     const location = useLocation()
-            
-    products.map((product) => {
-        console.log(Object.entries(product))
-    })
 
     return (
         <div className={styles.products__content}>

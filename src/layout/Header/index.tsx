@@ -59,6 +59,7 @@ const Header = () => {
 
   useEffect(() => {
     setIsOpen(false)
+    setQuery("")
   }, [location])
 
   return (
@@ -71,11 +72,11 @@ const Header = () => {
           <div className={styles.navbar__holder}>
             {
               (location.pathname === "/" && width > 991) ? null :
-              <button className={styles.menu__icon} onClick={handleOpen}>
-                <span className={isOpen ? styles.open : ""}></span>
-                <span className={isOpen ? styles.open : ""}></span>
-                <span className={isOpen ? styles.open : ""}></span>
-              </button>
+                <button className={styles.menu__icon} onClick={handleOpen}>
+                  <span className={isOpen ? styles.open : ""}></span>
+                  <span className={isOpen ? styles.open : ""}></span>
+                  <span className={isOpen ? styles.open : ""}></span>
+                </button>
             }
             <div className={styles.search__holder}>
               <form onSubmit={handleSubmit} className={styles.navbar__form}>
@@ -150,12 +151,8 @@ const Header = () => {
                 {totalQuantity}
               </span>
             </Link>
-            <Link to="/" className={`${styles.navbar__icons__item} ${styles.register}`}>
+            <Link to="/" className={styles.navbar__icons__item}>
               <FaRegUser />
-              <div className="flex-col hidden md:flex">
-                <span className={styles.register__text}>Daxil ol</span>
-                <span className={styles.register__text}>Qeydiyyat</span>
-              </div>
             </Link>
           </div>
         </nav>

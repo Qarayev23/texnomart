@@ -1,19 +1,19 @@
 import { CheckboxProps } from '../../types'
 import { capitalizeFirstLetter } from '../../utils'
 
-const Checkbox = ({ item, filterProducts }: CheckboxProps) => {
+const Checkbox = ({ item, name, filterProducts }: CheckboxProps) => {
     return (
         <>
-            <label htmlFor={`${item.value.toString()}-${item.name}`}>
-                {typeof item.value === 'string' ? capitalizeFirstLetter(item.value) : item.name === "operationTime" ? 
-                `${item.value} saat` : `${item.value} GB`}
+            <label htmlFor={`${item.toString()}-${name}`}>
+                {typeof item === 'string' ? capitalizeFirstLetter(item) : name === "operationTime" ?
+                    `${item} saat` : `${item} GB`}
             </label>
             <input
                 type='checkbox'
                 className='check-box'
-                name={item.name}
-                id={`${item.value.toString()}-${item.name}`}
-                value={item.value}
+                name={name}
+                id={`${item.toString()}-${name}`}
+                value={item}
                 onChange={filterProducts}
             />
         </>
