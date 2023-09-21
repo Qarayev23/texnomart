@@ -25,6 +25,12 @@
             letter-spacing: rem(-0.5);
             color: black;
             margin-bottom: rem(10);
+            height: rem(36);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
     }
 
