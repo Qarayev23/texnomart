@@ -108,13 +108,13 @@ export const brandItems = [
         path: "/product-brand/huawei"
     },
     {
-        label: "Xiaomi",
-        img: "/img/brands/xiaomi.png",
-        path: "/product-brand/xiaomi"
+        label: "LG",
+        img: "/img/brands/lg.png",
+        path: "/product-brand/lg"
     },
     {
-        label: "Acer",
-        img: "/img/brands/acer.png",
-        path: "/product-brand/acer"
-    },
+        label: "Samsung",
+        img: "/img/brands/samsung.png",
+        path: "/product-brand/samsung"
+    }
 ]

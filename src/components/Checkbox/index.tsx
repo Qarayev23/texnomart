@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from '../../utils'
 const Checkbox = ({ item, name, filterProducts }: CheckboxProps) => {
     return (
         <>
-            <label htmlFor={`${item}-${name}`}> {typeof item === 'string' && capitalizeFirstLetter(item)}  </label>
+            <label htmlFor={`${item}-${name}`}> {typeof item === 'string' && capitalizeFirstLetter(item)}</label>
             <input
                 type='checkbox'
                 className='check-box'

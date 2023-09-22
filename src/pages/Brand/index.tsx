@@ -58,7 +58,7 @@ const BrandPage = () => {
 
     return (
         <>
-            <Info />
+            <Info category={brand!}/>
             <section className="products">
                 <div className="g-container">
                     {

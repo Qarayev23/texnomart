@@ -19,9 +19,6 @@ const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen }: FilterBarProps
     if (!e.target.checked) {
       const categoryParams = `${e.target.name}=${e.target.value}`.replaceAll(" ", "+")
       const decoded = decodeURIComponent(location.search)
-      console.log(decoded);
-      console.log(categoryParams);
-      
       decoded.includes(`&${categoryParams}`) && navigate(`${decoded.replace(`&${categoryParams}`, "")}`)
     } else {
       setSearchParams((prevParams) => {

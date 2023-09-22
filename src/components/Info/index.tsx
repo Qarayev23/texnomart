@@ -1,33 +1,35 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './info.module.scss';
+import { useInfoQuery } from '../../redux/productApi';
 
-const Info = () => {
+const Info = ({ category }: { category: string }) => {
     const [show, setShow] = useState(false)
+    const [height, setHeight] = useState(63)
+    const { data } = useInfoQuery({ category: `${category}Info` });
+
+    const textRef = useRef<HTMLParagraphElement | null>(null);
+    const handleShow = () => {
+        setShow(!show)
+        setHeight((textRef?.current?.clientHeight! / 16) ?? 0);
+    }
 
     return (
         <section className={styles.info}>
             <div className="g-container">
-                <h3 className={styles.info__title}>Mobil telefonlar</h3>
-                <p className={show ? `${styles.info__text} ${styles.show}` : styles.info__text}>
-                    Məşhur brend smartfonlar üçün “Texnomart”a müraciət etmək ən doğrusudur. Mağazamızda ən son telefon
-                    modelləri ilə tanış
-                    olaraq onları sərfəli qiymətə əldə edə bilərsiniz. Müasir dövrdə telefonlardan yalnız zənglər üçün
-                    deyil, həm də
-                    şəkillər, videolar çəkmək və internetə daxil olmaq üçün istifadə edirlər. Telefonlar gündəlik
-                    həyatımızın ayrılmaz
-                    hissəsinə çevrilib. Mobil telefonlar, telefon modelləri, ən son model smartfonların funksiyaları ilə
-                    tanış olmaq üçün
-                    “Texnomart.az” saytına baş çəkin. Mobil telefon almaq dövrümüzün ən aktual alış-verişlərindəndir.
-                    Mobil telefonlar
-                    bir-birindən funksiya, dizayn və parametrlərinə görə fərqlənir. Dünyaca məşhur brend markalar hər
-                    kəsin büdcəsini nəzərə
-                    alaraq fərqli qiymət diapazonunda smartfonlar istehsal edir. Sərfəli qiymətə telefon yeniləmək
-                    istəyirsinizsə,
-                    “Texnomart”a baş çəkin. Kiçik büdcə ilə də keyfiyyətli smartfona sahib ola bilərsiniz. Səmərəli
-                    təkliflər və sərfəli
-                    qiymətdən faydalanmağa tələsin.
-                </p>
-                <button onClick={() => setShow(!show)}>{show ? "daha az göstər" : "daha çox göstər"}</button>
+                <div className="flex items-start gap-5">
+                    <div className={styles.info__img}>
+                        <img src={data?.img} alt={data?.title} />
+                    </div>
+                    <div>
+                        <h1 className={styles.info__title}>{data?.title}</h1>
+                        <div className={styles.info__text} style={{ maxHeight: show ? `${height}rem` : `${67 / 16}rem` }}>
+                            <p ref={textRef}>
+                                {data?.description}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button onClick={handleShow}>{show ? "daha az göstər" : "daha çox göstər"}</button>
             </div>
         </section>
     )

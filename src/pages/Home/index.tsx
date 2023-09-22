@@ -9,7 +9,7 @@ const Home = () => {
       <ProductsCatalog />
       <Banner />
       <ProductCarousel category={"smartphones"} title={"Smartfonlar"}/>
-      <ProductCarousel category={"laptops"} title={"Noutbuklar"} />
+      <ProductCarousel category={"televisions"} title={"Televizorlar"} />
       <BarndCarousel />
     </>
   )

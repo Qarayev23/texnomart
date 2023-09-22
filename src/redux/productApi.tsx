@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { GetFilterItemsProps, ProductDetailProps, ProductsProps, RootProductsProps } from '../types';
+import { GetFilterItemsProps, InfoProps, ProductDetailProps, ProductsProps, RootProductsProps } from '../types';
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -41,11 +41,15 @@ export const productsApi = createApi({
         }
       }
     }),
+    info: builder.query<InfoProps, { category: string }>({
+      query: ({ category }) => category,
+    }),
   }),
 })
 
 export const {
   useProductsQuery,
   useProductQuery,
-  useGetFilterItemsQuery
+  useGetFilterItemsQuery,
+  useInfoQuery
 } = productsApi;

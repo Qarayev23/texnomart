@@ -77,3 +77,9 @@ export interface ProductsComponentProps {
   handleOpen?: () => void
   options: { value: string, label: string }[]
 }
+
+export interface InfoProps {
+  title: string
+  description: string
+  img: string
+}

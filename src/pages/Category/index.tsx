@@ -69,7 +69,7 @@ const Category = () => {
 
     return (
         <>
-            <Info />
+            <Info category={category!} />
             <section className="products">
                 <div className="g-container">
                     <div className='flex lg:gap-6 gap-0'>
