@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ProductDetailProps, ProductsProps, RootProductsProps } from '../types';
+import { GetFilterItemsProps, ProductDetailProps, ProductsProps, RootProductsProps } from '../types';
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -9,6 +9,12 @@ export const productsApi = createApi({
     products: builder.query<RootProductsProps, { category: string | undefined, q: string }>({
       query: ({ category, q }) => category + q,
       transformResponse(apiResponse: ProductsProps[], meta): RootProductsProps {
+        return { apiResponse, totalCount: Number(meta?.response?.headers.get('X-Total-Count')) }
+      }
+    }),
+    getFilterItems: builder.query<GetFilterItemsProps, { category: string }>({
+      query: ({ category }) => category,
+      transformResponse(apiResponse: ProductsProps[]): GetFilterItemsProps {
         let keys: Array<string> = []
         let filterItemsObj: { [key: string]: any } = {}
 
@@ -20,7 +26,7 @@ export const productsApi = createApi({
           filterItemsObj[keys[i]] = apiResponse.map((product) => product.filterItems[keys[i]])
         }
 
-        return { apiResponse, filterItems: Object.entries(filterItemsObj), totalCount: Number(meta?.response?.headers.get('X-Total-Count')) }
+        return { filterItems: Object.entries(filterItemsObj) }
       }
     }),
     product: builder.query<ProductDetailProps, { category: string | undefined, id: string }>({
@@ -41,4 +47,5 @@ export const productsApi = createApi({
 export const {
   useProductsQuery,
   useProductQuery,
+  useGetFilterItemsQuery
 } = productsApi;

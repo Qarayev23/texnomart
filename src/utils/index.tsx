@@ -3,5 +3,7 @@ export function capitalizeFirstLetter(string: string) {
 }
 
 export const setFiterTitle = (item : string) => {
-    return item ===  "brand" && "Brend" || item ===  "operationTime" && "İşləmə müddəti" || item ===  "ram" && "Operativ yaddaş" || item ===  "memory" && "Daxili yaddaş"
+    return item ===  "brand" && "Brend" || item ===  "operationTime" && "İşləmə müddəti" || item ===  "ram" && 
+    "Operativ yaddaş" || item ===  "memory" && "Daxili yaddaş" || item === "screenSize" && "Ekran diaqonalı"||
+    item === "screenPermission" && "Ekran İcazəsi"
   }

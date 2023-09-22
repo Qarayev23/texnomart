@@ -177,7 +177,8 @@
     z-index: 0;
 
     @include breakpoint-max($mobile-width) {
-        width: calc(100% - rem(80));
+        width: calc(100% + rem(50));
+        left: rem(-50);
     }
 }
 

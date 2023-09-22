@@ -20,25 +20,26 @@ export const menuİtems = [
         path: "/category/smartphones"
     },
     {
-        label: "Smart saatlar",
-        img: "/img/smartwatch.png",
-        path: "/category/smartwatches"
-    },
-    {
         label: "Noutbuklar",
         img: "/img/laptop.png",
         path: "/category/laptops"
+    },
+    {
+        label: "Televizorlar",
+        img: "/img/television.png",
+        path: "/category/televisions"
+    },
+    {
+        label: "Smart saatlar",
+        img: "/img/smartwatch.png",
+        path: "/category/smartwatches"
     },
     // {
     //     label: "Kondisonerlər",
     //     img: "/img/air-conditioner.png",
     //     path: "/category/air-conditioners"
     // },
-    // {
-    //     label: "Televizorlar",
-    //     img: "/img/television.png",
-    //     path: "/category/televisions"
-    // },
+
     // {
     //     label: "Paltaryuyanlar",
     //     img: "/img/washing-machine.png",
@@ -53,25 +54,26 @@ export const catalogİtems = [
         path: "/category/smartphones"
     },
     {
-        label: "Smart saatlar",
-        img: "/img/watch.png",
-        path: "/category/smartwatches"
-    },
-    {
         label: "Noutbuklar",
         img: "/img/computer.png",
         path: "/category/laptops"
+    },
+    {
+        label: "Televizorlar",
+        img: "/img/televizor.png",
+        path: "/category/televisions"
+    },
+    {
+        label: "Smart saatlar",
+        img: "/img/watch.png",
+        path: "/category/smartwatches"
     },
     // {
     //     label: "Kondisonerlər",
     //     img: "/img/kondisoner.png",
     //     path: "/category/air-conditioners"
     // },
-    // {
-    //     label: "Televizorlar",
-    //     img: "/img/televizor.png",
-    //     path: "/category/televisions"
-    // },
+
     // {
     //     label: "Paltaryuyanlar",
     //     img: "/img/paltaryuyan.png",

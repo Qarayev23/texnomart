@@ -6,6 +6,7 @@ import { useProductQuery } from '../../redux/productApi';
 import { useAppDispatch } from '../../redux/hooks';
 import { monthlyPaymentBtns } from '../../constants';
 import styles from './productDetail.module.scss';
+import { setFiterTitle } from '../../utils';
 
 const ProductDetail = () => {
   const { id } = useParams<Params>();
@@ -77,24 +78,12 @@ const ProductDetail = () => {
                   <td>{product?.price} M</td>
                 </tr>
                 {
-                  product?.memory && <tr>
-                    <th>Daxili yaddaş</th>
-                    <td>{product?.memory} GB</td>
-                  </tr>
-                }
-                {
-                  product?.ram &&
-                  <tr>
-                    <th>Operativ yaddaş</th>
-                    <td>{product?.ram} GB</td>
-                  </tr>
-                }
-                {
-                  product?.operationTime &&
-                  <tr>
-                    <th>İşləmə müddəti</th>
-                    <td>{product?.operationTime} saat</td>
-                  </tr>
+                  Object.entries(product?.filterItems!).map(([key, value]) => (
+                    <tr key={key} className={key === "brand" ? "hidden" : ""}>
+                      <th>{setFiterTitle(key)}</th>
+                      <td>{value}</td>
+                    </tr>
+                  ))
                 }
               </tbody>
             </table>

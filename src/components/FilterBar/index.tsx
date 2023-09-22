@@ -1,27 +1,28 @@
 import { useEffect } from 'react'
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { Params, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 //import Nouislider from "nouislider-react"
 // import "nouislider/distribute/nouislider.css"
 import Checkbox from '../Checkbox'
 import { FilterBarProps } from '../../types'
 import styles from './filterBar.module.scss';
 import { setFiterTitle } from '../../utils';
-
-const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen, filterItems }: FilterBarProps) => {
+import { useGetFilterItemsQuery } from '../../redux/productApi';
+const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen }: FilterBarProps) => {
+  const { category } = useParams<Params>();
   const navigate = useNavigate()
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams()
+  const { data } = useGetFilterItemsQuery({ category: category! });
+  const filterItems = data?.filterItems
 
   const filterProducts = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.checked) {
-      setSearchParams((prevParams) => {
-        prevParams.set("_page", "1")
-        prevParams.set("_limit", limit.toString())
-        return prevParams
-      })
-
-      const categoryParams = `${e.target.name}=${e.target.value}`
-      location.search.includes(`&${categoryParams}`) && navigate(`${location.search.replace(`&${categoryParams}`, "")}`)
+      const categoryParams = `${e.target.name}=${e.target.value}`.replaceAll(" ", "+")
+      const decoded = decodeURIComponent(location.search)
+      console.log(decoded);
+      console.log(categoryParams);
+      
+      decoded.includes(`&${categoryParams}`) && navigate(`${decoded.replace(`&${categoryParams}`, "")}`)
     } else {
       setSearchParams((prevParams) => {
         prevParams.set("_page", "1")
@@ -88,7 +89,7 @@ const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen, filterItems }: F
               return <div className={styles.filter__row} key={i}>
                 <h4 className={styles.filter__title}>{setFiterTitle(filterItem[0])}</h4>
                 <ul className={styles.filter__list}>
-                  {[...new Set(filterItem[1])].sort((a:any, b:any):any => a-b).map(((item, index) => (
+                  {[...new Set(filterItem[1])].sort((a: any, b: any): any => a.split(" ")[0] - b.split(" ")[0]).map(((item, index) => (
                     <li className={styles.filter__item} key={index}>
                       <Checkbox item={item} name={filterItem[0]} filterProducts={filterProducts} />
                     </li>

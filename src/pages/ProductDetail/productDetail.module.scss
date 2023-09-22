@@ -4,7 +4,7 @@
     margin: rem(50) 0;
 
     &__title {
-        @include font(27, 400);
+        @include font(27, 700);
         color: $dark;
         margin-bottom: rem(20);
     }

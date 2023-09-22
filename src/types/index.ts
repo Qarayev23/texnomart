@@ -2,10 +2,12 @@ import { SingleValue } from "react-select"
 
 export interface FilterItemsProps {
   brand: string
-  memory?: number
-  ram?: number
-  operationTime?: number
-  [key: string]: any;
+  memory?: string
+  ram?: string
+  operationTime?: string
+  screenPermission: string
+  screenSize: string
+  [key: string]: any
 }
 
 export type ProductsProps = {
@@ -15,15 +17,18 @@ export type ProductsProps = {
   img: string
   price: number
   id: number
-  memory?: number
-  ram?: number
-  operationTime?: number
+  memory?: string
+  ram?: string
+  operationTime?: string
   filterItems: FilterItemsProps
 }
 
 export interface RootProductsProps {
   apiResponse: ProductsProps[]
   totalCount: number
+}
+
+export interface GetFilterItemsProps {
   filterItems: Array<[string, string[]]>
 }
 
@@ -53,7 +58,6 @@ export type SideBarProps = {
 export interface FilterBarProps extends SideBarProps {
   limit: number, setCurrentPage:
   React.Dispatch<React.SetStateAction<number>>
-  filterItems: Array<[string, string[]]> 
 }
 
 export interface PaginationProps {

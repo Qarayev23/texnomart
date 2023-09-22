@@ -26,8 +26,7 @@ const Category = () => {
     const [value, setValue] = useState(searchParams.get("_order") === "asc" && options[1] || searchParams.get("_order") === "desc" && options[2] || options[0])
     const { data, isLoading, isFetching, isError } = useProductsQuery({ category, q: location.search === "" ? `?_page=${currentPage}&_limit=${limit}` : location.search });
     const products = data?.apiResponse;
-    const productCount = data?.totalCount!;
-    const filterItems = data?.filterItems
+    const productCount = data?.totalCount!
     const { cart } = useAppSelector(state => state.cartReducer)
 
     const changePage = (selected: number) => {
@@ -81,7 +80,6 @@ const Category = () => {
                                     handleOpen={handleOpen}
                                     limit={limit}
                                     setCurrentPage={setCurrentPage}
-                                    filterItems={filterItems!}
                                 />
                                 <div className="w-full">
                                     <Products
