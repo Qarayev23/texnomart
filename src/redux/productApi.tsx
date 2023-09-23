@@ -26,7 +26,12 @@ export const productsApi = createApi({
           filterItemsObj[keys[i]] = apiResponse.map((product) => product.filterItems[keys[i]])
         }
 
-        return { filterItems: Object.entries(filterItemsObj) }
+        const maxPrice = Math.max(...apiResponse.map(item => item.price))
+        const minPrice = Math.min(...apiResponse.map(item => item.price))
+        
+        return {
+          filterItems: Object.entries(filterItemsObj), maxPrice, minPrice
+        }
       }
     }),
     product: builder.query<ProductDetailProps, { category: string | undefined, id: string }>({

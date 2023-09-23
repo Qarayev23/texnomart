@@ -74,7 +74,7 @@
     justify-content: space-between;
     gap: rem(10);
 
-    @include breakpoint-max($mobile-width){
+    @include breakpoint-max($mobile-width) {
         margin-bottom: rem(15);
     }
 }
@@ -84,7 +84,7 @@
     color: $gray;
     text-transform: uppercase;
 
-    @include breakpoint-max($mobile-width){
+    @include breakpoint-max($mobile-width) {
         font-size: rem(18);
     }
 }
@@ -138,7 +138,7 @@
                 background-color: $gray !important;
             }
 
-            @include breakpoint-max($mobile-width){
+            @include breakpoint-max($mobile-width) {
                 width: rem(10) !important;
                 height: rem(10) !important;
             }
@@ -159,5 +159,20 @@
                 font-size: rem(20);
             }
         }
+    }
+}
+
+.range-slider {
+    height: rem(5) !important;
+    background: #c5c5c5 !important;
+
+    &__range {
+        background-color: #022335 !important;
+    }
+
+    &__thumb {
+        border: 1px solid rgb(197, 197, 197) !important;
+        background: rgb(246, 246, 246) !important;
+        box-shadow: 0 2px 9px rgba(0, 0, 0, .23) !important;
     }
 }

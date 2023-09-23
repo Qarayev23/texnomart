@@ -38,6 +38,8 @@ export interface RootProductsProps {
 
 export interface GetFilterItemsProps {
   filterItems: Array<[string, string[]]>
+  maxPrice: number | undefined
+  minPrice: number | undefined
 }
 
 export interface CartProps extends ProductsProps {

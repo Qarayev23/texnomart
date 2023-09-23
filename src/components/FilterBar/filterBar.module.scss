@@ -46,6 +46,29 @@
         cursor: pointer;
       }
     }
+
+    &__price__inputs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: rem(20);
+      gap: rem(15);
+
+      input {
+        padding: rem(10);
+        border-radius: rem(5);
+        outline: 0;
+        background: #fff;
+        line-height: 1;
+        color: #000;
+        border: 1px solid #dfdfdf;
+        width: 100%;
+
+        &:focus {
+          border-color: #333;
+        }
+      }
+    }
   }
 }
 
@@ -88,41 +111,3 @@
     pointer-events: initial;
   }
 }
-
-// .range-slide-inputs {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   margin-bottom: 20px;
-// }
-
-// .range-slide-inputs input {
-//   width: 90px;
-//   height: 34px;
-//   text-align: center;
-// }
-
-// .noUi-horizontal {
-//   height: 1px !important;
-// }
-
-// .noUi-connect {
-//   background: black !important;
-// }
-
-// .noUi-base,
-// .noUi-connects {
-//   height: 1px !important;
-// }
-
-// .noUi-horizontal .noUi-handle {
-//   top: -7.5px !important;
-//   right: -7.5px !important;
-//   background: $gray !important;
-//   border-color: $gray !important;
-//   box-shadow: none !important;
-//   cursor: ew-resize !important;
-//   width: 15px !important;
-//   height: 15px !important;
-//   border-radius: 50%;
-// }

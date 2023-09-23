@@ -59,6 +59,10 @@ const Category = () => {
         localStorage.setItem("cartItems", JSON.stringify(cart))
     }, [cart])
 
+    useEffect(() => {
+        setValue(options[0])
+    }, [location.pathname])
+
     const handleOpen = () => {
         setIsOpen(!isOpen)
     }
