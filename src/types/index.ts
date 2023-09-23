@@ -4,9 +4,13 @@ export interface FilterItemsProps {
   brand: string
   memory?: string
   ram?: string
-  operationTime?: string
-  screenPermission: string
-  screenSize: string
+  operation_time?: string
+  screen_permission?: string
+  screen_size?: string
+  management_type?: string
+  capacity?: string
+  area?: string
+  engine_type?: string
   [key: string]: any
 }
 
@@ -19,7 +23,11 @@ export type ProductsProps = {
   id: number
   memory?: string
   ram?: string
-  operationTime?: string
+  operation_time?: string
+  management_type?: string
+  capacity?: string
+  area?: string
+  engine_type?: string
   filterItems: FilterItemsProps
 }
 

@@ -34,17 +34,16 @@ export const menuİtems = [
         img: "/img/smartwatch.png",
         path: "/category/smartwatches"
     },
-    // {
-    //     label: "Kondisonerlər",
-    //     img: "/img/air-conditioner.png",
-    //     path: "/category/air-conditioners"
-    // },
-
-    // {
-    //     label: "Paltaryuyanlar",
-    //     img: "/img/washing-machine.png",
-    //     path: "/category/washing-machines"
-    // }
+    {
+        label: "Kondisonerlər",
+        img: "/img/air-conditioner.png",
+        path: "/category/air_conditioners"
+    },
+    {
+        label: "Paltaryuyanlar",
+        img: "/img/washing-machine.png",
+        path: "/category/washing_machines"
+    }
 ]
 
 export const catalogİtems = [
@@ -68,17 +67,16 @@ export const catalogİtems = [
         img: "/img/watch.png",
         path: "/category/smartwatches"
     },
-    // {
-    //     label: "Kondisonerlər",
-    //     img: "/img/kondisoner.png",
-    //     path: "/category/air-conditioners"
-    // },
-
-    // {
-    //     label: "Paltaryuyanlar",
-    //     img: "/img/paltaryuyan.png",
-    //     path: "/category/washing-machines"
-    // }
+    {
+        label: "Kondisonerlər",
+        img: "/img/kondisoner.png",
+        path: "/category/air_conditioners"
+    },
+    {
+        label: "Paltaryuyanlar",
+        img: "/img/paltaryuyan.png",
+        path: "/category/washing_machines"
+    }
 ]
 
 export const brandItems = [
