@@ -1,6 +1,6 @@
 @import '../../assets/style/utilities/index.scss';
 
-.basket {
+.wishList {
     &__header {
         display: flex;
         align-items: center;
@@ -58,40 +58,9 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
-            padding-right: rem(120);
+            padding-right: rem(110);
             margin-top: rem(20);
             gap: rem(20);
-
-            .mobScreen {
-                display: none;
-            }
-
-            .minusBtn,
-            .plusBtn,
-            .count {
-                display: inline-block;
-                border: 1px solid #f1f1f1;
-                color: #ccc;
-                background-color: transparent;
-                padding: rem(8) rem(10);
-                text-align: center;
-                height: rem(33);
-            }
-
-            .minusBtn,
-            .plusBtn {
-                transition: 0.3s;
-
-                &:hover {
-                    background: darken(white, 10%);
-                    color: gray;
-                }
-            }
-
-            .count {
-                width: rem(50);
-                color: black;
-            }
         }
 
         &__remove {
@@ -109,34 +78,26 @@
                 }
             }
         }
+
+        &__stock {
+            color: #62C370;
+            padding-left: rem(15);
+        }
+
+        &__add {
+            color: #06c;
+            font-size: rem(16);
+
+            &:hover {
+                color: blue;
+            }
+        }
     }
 
     &__footer {
         display: flex;
         justify-content: space-between;
         margin-top: rem(20);
-    }
-
-    &__totals {
-        width: rem(450);
-        margin-left: auto;
-        margin-top: rem(40);
-
-        h3 {
-            font-weight: bold;
-            padding-bottom: rem(10);
-            border-bottom: 1px solid $dark-gray;
-        }
-
-        ul {
-            padding-top: rem(20);
-
-            li {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: rem(30);
-            }
-        }
     }
 
     &__empty {
@@ -165,12 +126,6 @@
                 flex-direction: column;
                 width: initial;
                 padding-right: 0;
-
-                .mobScreen {
-                    display: inline-block;
-                    padding-right: 5px;
-                    color: #999;
-                }
             }
 
             &__name {
@@ -179,22 +134,29 @@
                 }
             }
 
-            &__total {
-                margin-left: rem(-20);
-            }
-
             &__remove {
                 bottom: rem(-2);
-                right: rem(-15);
+                right: rem(-35);
             }
-        }
 
-        &__totals {
-            width: 100%;
+            &__stock {
+                padding-left: 0;
+            }
         }
     }
 
     @include breakpoint-max($tablet-width) {
+        &__item {
+            &__right {
+                margin-top: rem(15);
+                gap: rem(15);
+            }  
+            
+            &__left {
+                gap: rem(15);
+            }    
+        }
+
         &__footer {
             flex-direction: column;
             gap: rem(15);

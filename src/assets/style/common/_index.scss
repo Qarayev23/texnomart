@@ -73,9 +73,21 @@
     align-items: center;
     justify-content: space-between;
     gap: rem(10);
+    flex-wrap: wrap;
 
     @include breakpoint-max($mobile-width) {
         margin-bottom: rem(15);
+    }
+}
+
+.page-title {
+    padding: rem(50) 0;
+    font-size: rem(48);
+    text-align: center;
+
+    @include breakpoint-max($tablet-width) {
+        padding: rem(30) 0;
+        font-size: rem(32);
     }
 }
 
@@ -85,7 +97,7 @@
     text-transform: uppercase;
 
     @include breakpoint-max($mobile-width) {
-        font-size: rem(18);
+        font-size: rem(17);
     }
 }
 
@@ -106,9 +118,9 @@
     }
 
     @include breakpoint-max($mobile-width) {
-        padding: rem(0) rem(17);
-        font-size: rem(14);
-        height: rem(40);
+        padding: rem(0) rem(15);
+        font-size: rem(12);
+        height: rem(38);
     }
 }
 
@@ -175,4 +187,8 @@
         background: rgb(246, 246, 246) !important;
         box-shadow: 0 2px 9px rgba(0, 0, 0, .23) !important;
     }
+}
+
+.azn {
+    font-family: 'JISAZNRegular';
 }

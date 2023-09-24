@@ -4,7 +4,6 @@ import Products from "../../components/Products";
 import FilterBar from "../../components/FilterBar";
 import { Params, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useProductsQuery } from "../../redux/productApi";
-import { useAppSelector } from "../../redux/hooks";
 import { SingleValue } from "react-select";
 import PaginationComp from "../../components/Pagination";
 import Spinner from "../../components/Spinner";
@@ -27,7 +26,6 @@ const Category = () => {
     const { data, isLoading, isFetching, isError } = useProductsQuery({ category, q: location.search === "" ? `?_page=${currentPage}&_limit=${limit}` : location.search });
     const products = data?.apiResponse;
     const productCount = data?.totalCount!
-    const { cart } = useAppSelector(state => state.cartReducer)
 
     const changePage = (selected: number) => {
         setSearchParams((prevParams) => {
@@ -54,10 +52,6 @@ const Category = () => {
         setValue(newValue!)
         setCurrentPage(1)
     }
-
-    useEffect(() => {
-        localStorage.setItem("cartItems", JSON.stringify(cart))
-    }, [cart])
 
     useEffect(() => {
         setValue(options[0])

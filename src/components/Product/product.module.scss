@@ -1,6 +1,7 @@
 @import '../../assets/style/utilities/index.scss';
 
 .product {
+    position: relative;
     border: 1px solid rgba(0, 0, 0, 0.08);
     padding: rem(15) rem(15) rem(10) rem(15);
     transition: 0.5s;
@@ -95,6 +96,37 @@
         }
     }
 
+    &__icons {
+        position: absolute;
+        top: rem(10);
+        left: rem(15);
+        display: flex;
+        flex-direction: column;
+        gap: rem(5);
+    }
+
+    &__icon {
+        background-color: white;
+        border-radius: 50%;
+        padding: rem(3);
+
+        svg {
+            width: rem(20);
+            height: rem(20);
+            fill: rgb(55, 58, 54);
+
+            &:hover {
+                fill: $light-red;
+            }
+        }
+
+        &.active {
+            svg {
+                fill: $light-red;
+            }
+        }
+    }
+
     @include breakpoint-max($mobile-width) {
         padding: rem(10);
 
@@ -113,6 +145,10 @@
             &::before {
                 display: none;
             }
+        }
+
+        &__icons {
+            left: rem(10);
         }
     }
 }

@@ -42,8 +42,9 @@ export interface GetFilterItemsProps {
   minPrice: number | undefined
 }
 
-export interface CartProps extends ProductsProps {
+export interface BasketProps extends ProductsProps {
   count: number
+  [key: string]: any;
 }
 
 export interface ProductDetailProps extends ProductsProps {

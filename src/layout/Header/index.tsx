@@ -4,7 +4,7 @@ import { DebounceInput } from 'react-debounce-input';
 import { useProductsQuery } from '../../redux/productApi';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
-import { FaRegUser } from 'react-icons/fa';
+import { FaRegHeart, FaRegUser } from 'react-icons/fa';
 import styles from './header.module.scss';
 import Spinner from '../../components/Spinner';
 import SideBar from '../../components/Sidebar';
@@ -16,7 +16,9 @@ const Header = () => {
   const [width, setWidth] = useState(window.innerWidth)
   const { data, isLoading } = useProductsQuery({ category: "allProducts?q=", q: query }, { skip: skip });
   const products = data?.apiResponse
-  const { cart } = useAppSelector(state => state.cartReducer)
+  const { basket } = useAppSelector(state => state.basketReducer)
+  const { wishlist } = useAppSelector(state => state.wishlistReducer)
+  const { compare } = useAppSelector(state => state.compareReducer)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -45,7 +47,15 @@ const Header = () => {
     return navigate(`/${category}/${id}`);
   }
 
-  const totalQuantity = cart.reduce((acc, element) => {
+  const basketQuantity = basket.reduce((acc, element) => {
+    return acc + element.count
+  }, 0)
+
+  const wishlistQuantity = wishlist.reduce((acc, element) => {
+    return acc + element.count
+  }, 0)
+
+  const compareQuantity = compare.reduce((acc, element) => {
     return acc + element.count
   }, 0)
 
@@ -133,22 +143,22 @@ const Header = () => {
             </div>
           </div>
           <div className={styles.navbar__icons}>
-            <Link to="/" className={`${styles.navbar__icons__item} ${styles.tel}`}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                <path d="M27.308,20.649l-2.2-2.2a3.521,3.521,0,0,0-4.938-.021,2.152,2.152,0,0,1-2.729.267A15.026,15.026,0,0,1,13.3,14.562a2.181,2.181,0,0,1,.284-2.739A3.521,3.521,0,0,0,13.553,6.9l-2.2-2.2a3.514,3.514,0,0,0-4.961,0l-.633.634c-3.3,3.3-3.053,10.238,3.813,17.1,4.14,4.141,8.307,5.875,11.686,5.875a7.5,7.5,0,0,0,5.418-2.061l.634-.634A3.513,3.513,0,0,0,27.308,20.649ZM25.894,24.2l-.634.634c-2.6,2.6-8.339,2.125-14.276-3.813S4.571,9.34,7.171,6.74L7.8,6.107a1.511,1.511,0,0,1,2.133,0l2.2,2.2a1.511,1.511,0,0,1,.021,2.11,4.181,4.181,0,0,0-.531,5.239,17.01,17.01,0,0,0,4.713,4.706,4.179,4.179,0,0,0,5.231-.517,1.512,1.512,0,0,1,2.118.013l2.2,2.2A1.51,1.51,0,0,1,25.894,24.2Z"></path>
-              </svg>
-              <span>*3344</span>
+            <Link to="/compare" className={styles.navbar__icons__item}>
+              <span className={styles.count}>
+                {compareQuantity}
+              </span>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path d='M23.141,27.466a6.876,6.876,0,0,1-6.859-6.876.82.82,0,0,1,.059-.329l5.44-12.509H8.231l5.44,12.512a.78.78,0,0,1,.061.313A6.866,6.866,0,0,1,0,20.605a1.409,1.409,0,0,1,.057-.329l.008-.027.051-.095.118-.306A1,1,0,0,0,.3,19.689l.268-.6c.035-.093.065-.168.1-.236l.3-.666.172-.091-.111-.041c.022-.061.126-.3.126-.3l.064-.144c.024-.051.046-.1.065-.152.038-.1.225-.522.27-.612l.164-.4a3.074,3.074,0,0,0,.151-.355l.975-2.235c.059-.125.118-.254.167-.384l.436-.984L3.9,11.406c.033-.075.219-.483.236-.542a2.3,2.3,0,0,0,.1-.237L5.005,8.88l.119-.3L5.469,7.8l.1-.222.057-.152.248-.565A1.813,1.813,0,0,1,6,6.6l.25-.592h.073C6.5,6,6.7,5.992,6.9,5.989h7.2V2.534h1.774V5.989H22.8c.3.007.592.007.886.007H23.8v.118a2.141,2.141,0,0,0,.176.484,2.4,2.4,0,0,1,.1.224s.3.71.324.743l.112.237.217.52.663,1.5c.042.111.087.208.133.307a3.982,3.982,0,0,0,.165.379l.153.37c.021.056.208.465.208.465l.107.257.654,1.51.054.109A2.554,2.554,0,0,1,27,13.5a3.27,3.27,0,0,0,.156.366l.646,1.508a2.635,2.635,0,0,1,.163.369l.165.362c.046.118.1.237.154.355l.323.749c.059.132.084.187.105.244.067.15.1.23.132.315a1.975,1.975,0,0,1,.132.293l-.038.212.108-.05.175.392.391.913.089.189a.975.975,0,0,0,.059.137.677.677,0,0,1,.053.142l.1.218a1.3,1.3,0,0,1,.089.374,6.881,6.881,0,0,1-6.87,6.871ZM1.962,22a5.083,5.083,0,0,0,6.286,3.532A5.148,5.148,0,0,0,11.775,22l.077-.282H1.89Zm16.279,0a5.146,5.146,0,0,0,3.527,3.533,4.993,4.993,0,0,0,1.379.194,5.147,5.147,0,0,0,4.905-3.726l.073-.283H18.163Zm9.627-2.046L23.145,9.109,18.421,19.958Zm-16.277,0L6.869,9.109,2.145,19.958Z' /></svg>
             </Link>
-            {/* <Link to="/" className={styles.navbar__icons__item}>
+            <Link to="/wish-list" className={styles.navbar__icons__item}>
               <FaRegHeart />
-              <span className={styles.count}>0</span>
-            </Link> */}
+              <span className={styles.count}>{wishlistQuantity}</span>
+            </Link>
             <Link to="/basket" className={styles.navbar__icons__item}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M19,7H16V6A4,4,0,0,0,8,6V7H5A1,1,0,0,0,4,8V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V8A1,1,0,0,0,19,7ZM10,6a2,2,0,0,1,4,0V7H10Zm8,13a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V9H8v1a1,1,0,0,0,2,0V9h4v1a1,1,0,0,0,2,0V9h2Z"></path>
               </svg>
               <span className={styles.count}>
-                {totalQuantity}
+                {basketQuantity}
               </span>
             </Link>
             <Link to="/" className={styles.navbar__icons__item}>

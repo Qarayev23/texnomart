@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Params, useNavigate, useParams } from "react-router-dom";
 import Spinner from '../../components/Spinner';
-import { addToCart } from '../../redux/features/cartSlice';
+import { addToBasket } from '../../redux/features/basketSlice';
 import { useProductQuery } from '../../redux/productApi';
 import { useAppDispatch } from '../../redux/hooks';
 import { monthlyPaymentBtns } from '../../constants';
@@ -56,7 +56,7 @@ const ProductDetail = () => {
                 </div>
                 <button
                   className="g-button g-button--red"
-                  onClick={() => dispatch(addToCart(product!))} >
+                  onClick={() => dispatch(addToBasket(product!))} >
                   Səbətə at
                 </button>
               </div>

@@ -17,32 +17,32 @@ export const menuİtems = [
     {
         label: "Smartfonlar",
         img: "/img/mobile-phone.png",
-        path: "/category/smartphones"
+        path: "/category/smartfonlar"
     },
     {
         label: "Noutbuklar",
         img: "/img/laptop.png",
-        path: "/category/laptops"
+        path: "/category/noutbuklar"
     },
     {
         label: "Televizorlar",
         img: "/img/television.png",
-        path: "/category/televisions"
+        path: "/category/televizorlar"
     },
     {
         label: "Smart saatlar",
         img: "/img/smartwatch.png",
-        path: "/category/smartwatches"
+        path: "/category/smart-saatlar"
     },
     {
         label: "Kondisonerlər",
         img: "/img/air-conditioner.png",
-        path: "/category/air_conditioners"
+        path: "/category/kondisonerler"
     },
     {
         label: "Paltaryuyanlar",
         img: "/img/washing-machine.png",
-        path: "/category/washing_machines"
+        path: "/category/paltar-yuyanlar"
     }
 ]
 
@@ -50,32 +50,32 @@ export const catalogİtems = [
     {
         label: "Smartfonlar",
         img: "/img/smartphone.png",
-        path: "/category/smartphones"
+        path: "/category/smartfonlar"
     },
     {
         label: "Noutbuklar",
         img: "/img/computer.png",
-        path: "/category/laptops"
+        path: "/category/noutbuklar"
     },
     {
         label: "Televizorlar",
         img: "/img/televizor.png",
-        path: "/category/televisions"
+        path: "/category/televizorlar"
     },
     {
         label: "Smart saatlar",
         img: "/img/watch.png",
-        path: "/category/smartwatches"
+        path: "/category/smart-saatlar"
     },
     {
         label: "Kondisonerlər",
         img: "/img/kondisoner.png",
-        path: "/category/air_conditioners"
+        path: "/category/kondisonerler"
     },
     {
         label: "Paltaryuyanlar",
         img: "/img/paltaryuyan.png",
-        path: "/category/washing_machines"
+        path: "/category/paltar-yuyanlar"
     }
 ]
 
