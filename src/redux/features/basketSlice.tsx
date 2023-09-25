@@ -24,16 +24,16 @@ const basketSlice = createSlice({
       }
       else {
         state.basket = state.basket.map(item => item.id === action.payload.id ?
-          { ...item, count: item.count + 1 } : item)
+          { ...item, count: item?.count! + 1 } : item)
       }
     },
     increase: (state, action: PayloadAction<number>) => {
       state.basket = state.basket.map(item => item.id === action.payload ?
-        { ...item, count: item.count + 1 } : item)
+        { ...item, count: item?.count! + 1 } : item)
     },
     decrease: (state, action: PayloadAction<number>) => {
-      state.basket = state.basket.map(item => item.id === action.payload ? { ...item, count: item.count - 1 } : item)
-        .filter(item => item.count !== 0)
+      state.basket = state.basket.map(item => item.id === action.payload ? { ...item, count: item?.count! - 1 } : item)
+        .filter(item => item?.count !== 0)
     },
     removeFromBasket: (state, action: PayloadAction<number>) => {
       state.basket = state.basket.filter((item) => item.id !== action.payload)
