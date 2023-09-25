@@ -20,7 +20,7 @@ const compareSlice = createSlice({
     addToCompare: (state, action: PayloadAction<ProductsProps>) => {
       const check = state.compare.some(item => item.id === action.payload.id)
       if (!check) {
-        state.compare.push({ ...action.payload, wish_list: true, count: 1 });
+        state.compare.push({ ...action.payload, count: 1 });
       }
       else {
         state.compare = state.compare.filter((item) => item.id !== action.payload.id)

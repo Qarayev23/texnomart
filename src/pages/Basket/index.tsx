@@ -9,11 +9,11 @@ const Basket = () => {
         const { basket } = useAppSelector(state => state.basketReducer)
         
         const totalPrice = basket.reduce((acc, element) => {
-            return acc + element.price * element.count
+            return acc + element.price * element.count!
         }, 0)
 
         const totalQuantity = basket.reduce((acc, element) => {
-            return acc + element.count
+            return acc + element.count!
         }, 0)
 
         return (
@@ -37,7 +37,7 @@ const Basket = () => {
                         <ul className={styles.basket__list}>
                             {
                                 basket.map((item) => {
-                                    const amount = item.price * item.count
+                                    const amount = item.price * item.count!
                                     return (
                                         <li className={styles.basket__item} key={item.id}>
                                             <div className={styles.basket__item__left}>
@@ -51,7 +51,7 @@ const Basket = () => {
                                             <div className={styles.basket__item__right}>
                                                 <div className={styles.basket__item__price}>
                                                     <span className={styles.mobScreen}>Qiymət:</span>
-                                                    <span>{item.price}M</span>
+                                                    <span>{item.price} <span className='azn'>M</span></span>
                                                 </div>
                                                 <div className={styles.basket__item__quantity}>
                                                     <button type="button" className={styles.minusBtn} onClick={() => dispatch(decrease(item.id))}>
@@ -64,7 +64,7 @@ const Basket = () => {
                                                 </div>
                                                 <div className={styles.basket__item__total}>
                                                     <span className={styles.mobScreen}>Ümumi:</span>
-                                                    <span>{amount}M</span>
+                                                    <span>{amount} <span className='azn'>M</span></span>
                                                 </div>
                                                 <div className={styles.basket__item__remove}>
                                                     <button onClick={() => dispatch(removeFromBasket(item.id))}>
@@ -95,7 +95,7 @@ const Basket = () => {
                                     </li>
                                     <li>
                                         <span>Ümumi məbləğ</span>
-                                        <span>{totalPrice}M</span>
+                                        <span>{totalPrice}  <span className='azn'>M</span></span>
                                     </li>
                                 </ul>
                                 <button className="g-button g-button--white ml-auto lg:ml-0">Kartla ödə</button>

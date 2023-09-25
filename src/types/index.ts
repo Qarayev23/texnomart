@@ -43,7 +43,7 @@ export interface GetFilterItemsProps {
 }
 
 export interface BasketProps extends ProductsProps {
-  count: number
+  count?: number
   [key: string]: any;
 }
 

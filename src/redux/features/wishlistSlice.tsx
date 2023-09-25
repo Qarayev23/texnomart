@@ -20,7 +20,7 @@ const wishlistSlice = createSlice({
     addToWishlist: (state, action: PayloadAction<ProductsProps>) => {
       const check = state.wishlist.some(item => item.id === action.payload.id)
       if (!check) {
-        state.wishlist.push({ ...action.payload, wish_list: true, count: 1 });
+        state.wishlist.push({ ...action.payload, count: 1 });
       }
       else {
         state.wishlist = state.wishlist.filter((item) => item.id !== action.payload.id)

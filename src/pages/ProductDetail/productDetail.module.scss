@@ -143,6 +143,32 @@
             }
         }
     }
+
+    &__icons {
+        display: flex;
+        gap: rem(20);
+        align-items: center;
+        margin-top: rem(15);
+    }
+
+    &__icon {
+        &.active {
+            svg {
+                fill: $light-red;
+            }
+        }
+
+        svg {
+            width: rem(35);
+            font-size: rem(30);
+            fill: $dark;
+            transition: 0.3s;
+
+            &:hover {
+                fill: $light-red;
+            }
+        }
+    }
 }
 
 @include breakpoint-max($desktop-sm-width) {

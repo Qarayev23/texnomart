@@ -56,31 +56,12 @@
 
     &__icons {
         display: flex;
-        align-self: center;
         gap: rem(20);
 
         svg {
             width: rem(35);
             font-size: rem(30);
             fill: #fff;
-        }
-
-        &__item {
-            display: flex;
-            align-items: center;
-            gap: rem(5);
-            color: white;
-            position: relative;
-
-            &:first-of-type {
-                transform: translateY(rem(2))
-            }
-        }
-
-        .tel {
-            span {
-                @include font(26, 700);
-            }
         }
 
         .count {
@@ -96,6 +77,18 @@
             border-radius: 50%;
             width: rem(19);
             height: rem(19);
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        gap: rem(5);
+        color: white;
+        position: relative;
+
+        &:first-of-type {
+            transform: translateY(rem(2))
         }
     }
 
@@ -133,12 +126,6 @@
 }
 
 @include breakpoint-max($tablet-width) {
-    .tel {
-        span {
-            font-size: rem(20) !important;
-        }
-    }
-
     .search__results {
         width: 100%;
     }
