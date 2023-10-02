@@ -80,6 +80,16 @@
     }
 }
 
+.carousel-title {
+    @include font(23, 600);
+    color: $gray;
+    text-transform: uppercase;
+
+    @include breakpoint-max($mobile-width) {
+        font-size: rem(17);
+    }
+}
+
 .page-title {
     padding: rem(50) 0;
     font-size: rem(48);
@@ -88,16 +98,6 @@
     @include breakpoint-max($tablet-width) {
         padding: rem(30) 0;
         font-size: rem(32);
-    }
-}
-
-.carousel-title {
-    @include font(23, 600);
-    color: $gray;
-    text-transform: uppercase;
-
-    @include breakpoint-max($mobile-width) {
-        font-size: rem(17);
     }
 }
 

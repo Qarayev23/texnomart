@@ -1,0 +1,18 @@
+.spinner {
+    text-align: center;
+    width: 100%;
+
+    img {
+        width: rem(300);
+    }
+
+    &.search__spinner {
+        position: absolute;
+
+        img {
+            position: absolute;
+            width: rem(50);
+            right: rem(100);
+        }
+    }
+}

@@ -70,7 +70,7 @@ const Compare = () => {
                                                         <h4 className={styles.compare__title}>{item.name}</h4>
                                                     </Link>
                                                     <button
-                                                     className={styles.compare__add} onClick={() => dispatch(addToBasket(item))}>Səbətə at</button>
+                                                        className={styles.compare__add} onClick={() => dispatch(addToBasket(item))}>Səbətə at</button>
                                                 </div>
                                             </td>
                                         ))
@@ -93,18 +93,17 @@ const Compare = () => {
 
                         : <div className={styles.compare__empty}>Müqayisədə məhsul yoxdur.</div>
                     }
-
-                    <div className={styles.compare__footer}>
-                        <Link to="/category/smartfonlar" className="g-button g-button--red">
-                            <FaLongArrowAltLeft />
-                            Mağazaya keç
-                        </Link>
-                        {compare.length > 0 &&
-                            <button className="g-button g-button--white" onClick={() => dispatch(clearCompare())}>
-                                Cədvəli təmizlə
-                            </button>
-                        }
-                    </div>
+                </div>
+                <div className={styles.compare__footer}>
+                    <Link to="/category/smartfonlar" className="g-button g-button--red">
+                        <FaLongArrowAltLeft />
+                        Mağazaya keç
+                    </Link>
+                    {compare.length > 0 &&
+                        <button className="g-button g-button--white" onClick={() => dispatch(clearCompare())}>
+                            Cədvəli təmizlə
+                        </button>
+                    }
                 </div>
             </div>
         </section>

@@ -23,6 +23,7 @@
 
     &__img {
         max-width: rem(335);
+        cursor: pointer;
 
         img {
             width: 100%;
@@ -217,3 +218,4 @@
         }
     }
 }
+

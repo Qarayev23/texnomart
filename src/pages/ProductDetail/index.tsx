@@ -5,13 +5,19 @@ import { addToBasket } from '../../redux/features/basketSlice';
 import { useProductQuery } from '../../redux/productApi';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { monthlyPaymentBtns } from '../../constants';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/thumbs';
 import styles from './productDetail.module.scss';
 import { setFiterTitle } from '../../utils';
 import { FaRegHeart } from 'react-icons/fa';
 import { addToCompare } from '../../redux/features/compareSlice';
 import { addToWishlist } from '../../redux/features/wishlistSlice';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Thumbs } from 'swiper/modules';
 
 const ProductDetail = () => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const { id } = useParams<Params>();
   const category = window.location.pathname.split('/')[1]
   const navigate = useNavigate();
@@ -42,7 +48,37 @@ const ProductDetail = () => {
         <div className={styles.productDetail__content}>
           <div className={styles.productDetail__left}>
             <div className={styles.productDetail__img}>
-              <img src={product?.img} alt={product?.name} />
+              <>
+                <Swiper
+                  spaceBetween={10}
+                  navigation={true}
+                  thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                  modules={[FreeMode, Thumbs]}
+                  className="mySwiper2"
+                >
+                  {product?.img.map((img, index) => (
+                    <SwiperSlide key={index}>
+                      <img src={img} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                <Swiper
+                  onSwiper={setThumbsSwiper}
+                  spaceBetween={10}
+                  slidesPerView={4}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Thumbs]}
+                  className="mySwiper"
+                >
+                  {product?.img.map((img, index) => (
+                    <SwiperSlide key={index}>
+                      <img src={img} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </>
+              {/* <img src={product?.img} alt={product?.name} /> */}
             </div>
             <div className={styles.productDetail__info}>
               <span className={styles.productDetail__price}>{product?.price} <span className='azn'>M</span></span>
@@ -109,7 +145,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   )
 }
 
