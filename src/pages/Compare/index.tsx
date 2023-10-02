@@ -64,7 +64,7 @@ const Compare = () => {
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44"><path d="M30.984,29.279v-.157h-.148l-7.792-7.563,7.864-7.635a.734.734,0,0,0,.017-1.039h0a.74.74,0,0,0-1.043-.013l-7.895,7.66-7.9-7.663a.742.742,0,0,0-1.043.014.732.732,0,0,0-.21.522.724.724,0,0,0,.219.515l7.871,7.64L13.06,29.192a.735.735,0,0,0-.014,1.043.742.742,0,0,0,1.044.015l7.894-7.663,7.9,7.663a.738.738,0,0,0,.516.208.752.752,0,0,0,.528-.223.719.719,0,0,0,.209-.521A.729.729,0,0,0,30.984,29.279Z" /><path d="M22,0A22,22,0,0,0,0,22H0a22,22,0,0,0,44,0h0A22,22,0,0,0,22,0Zm0,42A20,20,0,1,1,42,22,20.023,20.023,0,0,1,22,42Z" /></svg>
                                                     </button>
                                                     <Link to={`/${item.category}/${item.id}`}>
-                                                        <img className={styles.compare__img} src={item.img} alt={item.name} />
+                                                        <img className={styles.compare__img} src={item.img[0]} alt={item.name} />
                                                     </Link>
                                                     <Link to={`/${item.category}/${item.id}`}>
                                                         <h4 className={styles.compare__title}>{item.name}</h4>

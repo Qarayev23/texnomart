@@ -18,7 +18,7 @@ export type ProductsProps = {
   category: string
   name: string
   brand: string
-  img: string
+  img: Array<string>
   price: number
   id: number
   memory?: string
@@ -93,4 +93,10 @@ export interface InfoProps {
   title: string
   description: string
   img: string
+}
+
+export interface ProductCarauselProps {
+  category: string
+  title: string
+  id?: number
 }

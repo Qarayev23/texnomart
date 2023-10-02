@@ -1,7 +1,7 @@
 @import '../../assets/style/utilities/index.scss';
 
 .productDetail {
-    margin: rem(50) 0;
+    margin-top: rem(50);
 
     &__title {
         @include font(27, 700);
@@ -18,18 +18,36 @@
         display: flex;
         align-items: center;
         width: 50%;
-        gap: rem(20);
+        gap: rem(40);
     }
 
     &__img {
         max-width: rem(335);
+        height: rem(335);
+        margin: auto;
         cursor: pointer;
+        width: 100%;
 
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
+    }
+
+    &__thumbImg {
+        height: rem(50);
+        width: 100%;
+        object-fit: contain;
+    }
+
+    &__carousel {
+        overflow-x: hidden;
+        max-width: rem(370);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: rem(20);
     }
 
     &__info {
@@ -119,7 +137,7 @@
     }
 
     &__right {
-        width: 50%;
+        flex-grow: 1;
         margin-top: rem(40);
     }
 
@@ -170,38 +188,19 @@
             }
         }
     }
-}
 
-@include breakpoint-max($desktop-sm-width) {
-    .productDetail {
+    @include breakpoint-max($desktop-sm-width) {
         &__content {
             flex-direction: column;
         }
 
         &__left {
             width: 100%;
+            flex-direction: column;
         }
 
         &__right {
-            width: 100%;
             margin: 0;
-        }
-    }
-}
-
-@include breakpoint-max($tablet-width) {
-    .productDetail {
-        &__title {
-            font-size: rem(20);
-            text-align: center;
-        }
-    }
-}
-
-@include breakpoint-max($mobile-width) {
-    .productDetail {
-        &__left {
-            flex-direction: column;
         }
 
         &__calc-title {
@@ -212,10 +211,38 @@
             align-items: center;
         }
 
+        &__title {
+            text-align: center;
+        }
+    }
+
+    @include breakpoint-max($tablet-width) {
+        &__content {
+            gap: rem(20);
+        }
+
+        &__left {
+            gap: rem(20);
+        }
+
+        &__title {
+            font-size: rem(20);
+        }
+
+        &__img {
+            height: rem(300);
+        }
+
+        &__thumbImg {
+            height: rem(40);
+        }
+    }
+
+    @include breakpoint-max($mobile-width) {
+
         td,
         th {
             font-size: rem(14);
         }
     }
 }
-

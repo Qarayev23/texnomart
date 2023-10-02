@@ -42,7 +42,7 @@ const Basket = () => {
                                         <li className={styles.basket__item} key={item.id}>
                                             <div className={styles.basket__item__left}>
                                                 <div className={styles.basket__item__img}>
-                                                    <img src={item.img} alt={item.name} />
+                                                    <img src={item.img[0]} alt={item.name} />
                                                 </div>
                                                 <Link to={`/${item.category}/${item.id}`} className={styles.basket__item__name}>
                                                     <h4>{item.name}</h4>

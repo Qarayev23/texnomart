@@ -27,7 +27,7 @@ const Product = ({ product }: { product: ProductsProps }) => {
                 </button>
             </div>
             <Link to={`/${product.category}/${product.id}`} className={styles.product__img}>
-                <img src={product.img} alt={product.name} />
+                <img src={product.img[0]} alt={product.name} />
             </Link>
             <Link to={`/${product.category}/${product.id}`} className={styles.product__name}>
                 <h4>{product.name}</h4>

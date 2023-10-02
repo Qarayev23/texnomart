@@ -111,7 +111,7 @@ const Header = () => {
                 {products?.map((item) => (
                   <button className={styles.directed__btn} onClick={() => handleNavigate(item.id, item.category)} key={item.id}>
                     <div className={styles.product__image}>
-                      <img className={styles.front} src={item.img} />
+                      <img className={styles.front} src={item.img[0]} />
                     </div>
                     <div className={styles.product__data}>
                       <h3>{item.name}</h3>

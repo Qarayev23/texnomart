@@ -6,10 +6,11 @@ import styles from './productCarousel.module.scss';
 import Product from '../Product';
 import { useProductsQuery } from '../../redux/productApi';
 import { Link } from 'react-router-dom';
+import { ProductCarauselProps } from '../../types';
 
-const ProductCarousel = ({ category, title }: { category: string, title: string }) => {
-    const { data } = useProductsQuery({ category, q: "?_limit=8" });
-    const products = data?.apiResponse;
+const ProductCarousel = ({ category, title, id }: ProductCarauselProps) => {
+    const { data } = useProductsQuery({ category, q: "?_start=1&_end=8" });
+    const products = id ? data?.apiResponse.filter(item => item?.id !== id) : data?.apiResponse;
 
     return (
         <section className={styles.productCarousel}>
