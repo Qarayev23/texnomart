@@ -33,7 +33,7 @@ export type ProductsProps = {
 
 export interface ProductCardProps {
   product: ProductsProps
-  sort: { row: boolean, grid: boolean }
+  sort?: { row: boolean, grid: boolean }
 }
 
 export interface RootProductsProps {
