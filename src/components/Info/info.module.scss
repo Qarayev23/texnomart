@@ -42,6 +42,8 @@
     }
 
     @include breakpoint-max($mobile-width) {
+        margin: rem(30) 0;
+
         &__title {
             font-size: rem(21);
         }

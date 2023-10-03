@@ -35,13 +35,13 @@ export const productsApi = createApi({
       }
     }),
     product: builder.query<ProductDetailProps, { category: string | undefined, id: string }>({
-      query: ({ category, id }) => `${category}/${id}`,
-      transformResponse: (response: ProductsProps) => {
+      query: ({ category, id }) => `${category}?name=${id}`,
+      transformResponse: (response: ProductsProps[]) => {
         return {
-          ...response, monthlyPayment: {
-            sixMonths: Number((response.price / 6).toFixed(2)),
-            nineMonths: Number((response.price / 9).toFixed(2)),
-            twelveMonths: Number((response.price / 12).toFixed(2))
+          ...response[0], monthlyPayment: {
+            sixMonths: Number((response[0].price / 6).toFixed(2)),
+            nineMonths: Number((response[0].price / 9).toFixed(2)),
+            twelveMonths: Number((response[0].price / 12).toFixed(2))
           }
         }
       }

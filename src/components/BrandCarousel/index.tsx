@@ -34,10 +34,9 @@ const BarndCarousel = () => {
                             slidesPerView: 5,
                         },
                     }}
-                    className={styles.brandCarousel__swiper}
-                >
+                    className={styles.brandCarousel__swiper}>
                     {
-                        brandItems.map((item, index) => {
+                        brandItems.slice(0, 7).map((item, index) => {
                             return (
                                 <SwiperSlide key={index}>
                                     <Link to={item.path} className={styles.brandCarousel__item}>

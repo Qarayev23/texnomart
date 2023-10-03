@@ -89,4 +89,8 @@
       cursor: initial !important;
     }
   }
+
+  @include breakpoint-max($mobile-width) {
+    margin-top: rem(30);
+  }
 }

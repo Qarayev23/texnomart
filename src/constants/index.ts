@@ -91,6 +91,11 @@ export const brandItems = [
         path: "/product-brand/xiaomi"
     },
     {
+        label: "Arçelik",
+        img: "/img/brands/arcelik.png",
+        path: "/product-brand/arçelik"
+    },
+    {
         label: "Acer",
         img: "/img/brands/acer.png",
         path: "/product-brand/acer"

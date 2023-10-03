@@ -23,8 +23,8 @@ const FilterBar = ({ limit, setCurrentPage, isOpen, handleOpen }: FilterBarProps
   const filterProducts = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.checked) {
       const categoryParams = `${e.target.name}=${e.target.value}`.replaceAll(" ", "+")
-      const decoded = decodeURIComponent(location.search)
-      decoded.includes(`&${categoryParams}`) && navigate(`${decoded.replace(`&${categoryParams}`, "")}`)
+      const decodedURL = decodeURIComponent(location.search)
+      decodedURL.includes(`&${categoryParams}`) && navigate(`${decodedURL.replace(`&${categoryParams}`, "")}`)
     } else {
       setSearchParams((prevParams) => {
         prevParams.set("_page", "1")

@@ -16,6 +16,7 @@
                 display: flex;
                 align-items: center;
                 gap: rem(20);
+                width: rem(200);
             }
         }
     }
@@ -31,6 +32,10 @@
     &__found {
         font-size: rem(15);
         color: $dark-gray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
 
         span {
             color: black;
@@ -42,6 +47,11 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: rem(50) 0;
+
+        &.row {
+            grid-template-columns: repeat(1, 1fr);
+            gap: rem(30);
+        }
     }
 
     @include breakpoint-max($desktop-width) {
@@ -80,6 +90,28 @@
         &__list {
             grid-template-columns: repeat(2, 1fr);
             gap: rem(25) 0;
+        }
+    }
+
+    &__sort {
+        svg {
+            width: rem(23);
+            height: rem(23);
+            opacity: 0.4;
+            color: $dark;
+            transition: 0.3s;
+        }
+
+        &.active {
+            svg {
+                opacity: 1;
+            }
+        }
+
+        &:hover {
+            svg {
+                opacity: 1;
+            }
         }
     }
 }

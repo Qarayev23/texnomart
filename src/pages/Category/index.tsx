@@ -55,6 +55,7 @@ const Category = () => {
 
     useEffect(() => {
         setValue(options[0])
+        setCurrentPage(1)
     }, [location.pathname])
 
     const handleOpen = () => {
@@ -100,8 +101,8 @@ const Category = () => {
                             </>
                         }
                     </div>
-                </div >
-            </section >
+                </div>
+            </section>
         </>
     )
 }

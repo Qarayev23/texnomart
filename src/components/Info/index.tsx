@@ -1,11 +1,12 @@
 import { useRef, useState } from 'react'
 import styles from './info.module.scss';
 import { useInfoQuery } from '../../redux/productApi';
+import { stringToURLFriendly } from "../../utils";
 
 const Info = ({ category }: { category: string }) => {
     const [show, setShow] = useState(false)
     const [height, setHeight] = useState(63)
-    const { data } = useInfoQuery({ category: `${category}_info` });
+    const { data } = useInfoQuery({ category: `${stringToURLFriendly(category)}_info` });
 
     const textRef = useRef<HTMLParagraphElement | null>(null);
     const handleShow = () => {

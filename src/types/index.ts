@@ -31,6 +31,11 @@ export type ProductsProps = {
   filterItems: FilterItemsProps
 }
 
+export interface ProductCardProps {
+  product: ProductsProps
+  sort: { row: boolean, grid: boolean }
+}
+
 export interface RootProductsProps {
   apiResponse: ProductsProps[]
   totalCount: number
