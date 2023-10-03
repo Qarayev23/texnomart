@@ -111,8 +111,13 @@ export const brandItems = [
         path: "/product-brand/lg"
     },
     {
-        label: "Samsung",
-        img: "/img/brands/samsung.png",
-        path: "/product-brand/samsung"
+        label: "Beko",
+        img: "/img/brands/beko.jpg",
+        path: "/product-brand/beko"
+    },
+    {
+        label: "Artel",
+        img: "/img/brands/artel.jpg",
+        path: "/product-brand/artel"
     }
 ]

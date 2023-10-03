@@ -4,7 +4,7 @@ import { DebounceInput } from 'react-debounce-input';
 import { useProductsQuery } from '../../redux/productApi';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
-import { FaRegHeart, FaRegUser } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
 import styles from './header.module.scss';
 import Spinner from '../../components/Spinner';
 import SideBar from '../../components/Sidebar';
@@ -161,9 +161,9 @@ const Header = () => {
                 {basketQuantity}
               </span>
             </Link>
-            <Link to="/" className={styles.navbar__icon}>
+            {/* <Link to="/" className={styles.navbar__icon}>
               <FaRegUser />
-            </Link>
+            </Link> */}
           </div>
         </nav>
       </div>

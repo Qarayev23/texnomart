@@ -11,6 +11,7 @@ const BarndCarousel = () => {
             <div className="g-container">
                 <div className="carousel-headline">
                     <h2 className="carousel-title">Markalar</h2>
+                    <Link to="/brands" className='btn-all'>Bütün markaları gör</Link>
                 </div>
                 <Swiper
                     pagination={{ clickable: true }}

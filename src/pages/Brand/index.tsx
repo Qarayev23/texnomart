@@ -7,7 +7,7 @@ import PaginationComp from "../../components/Pagination";
 import { useState } from "react";
 import Spinner from "../../components/Spinner";
 
-const BrandPage = () => {
+const Brand = () => {
     const { brand } = useParams<Params>()
     const limit = 8;
     const sort = "price"
@@ -90,4 +90,4 @@ const BrandPage = () => {
     )
 }
 
-export default BrandPage
+export default Brand

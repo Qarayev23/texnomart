@@ -5,9 +5,10 @@ import NotFound from "../pages/NotFound";
 import ProductDetail from "../pages/ProductDetail";
 import Root from "../layout/Root";
 import Category from "../pages/Category";
-import BrandPage from "../pages/Brand";
 import WishList from "../pages/WishList";
 import Compare from "../pages/Compare";
+import Brand from "../pages/Brand";
+import Brands from "../pages/Brands";
 
 export const router = createBrowserRouter([
     {
@@ -44,8 +45,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "product-brand/:brand",
-                element: <BrandPage />,
+                element: <Brand/>,
             },
+            {
+                path: "/brands",
+                element: <Brands />,
+            }
         ],
     },
 ]);
