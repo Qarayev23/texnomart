@@ -44,13 +44,13 @@ export const router = createBrowserRouter([
                 element: <ProductDetail />,
             },
             {
-                path: "product-brand/:brand",
-                element: <Brand/>,
-            },
-            {
                 path: "/brands",
                 element: <Brands />,
+            },
+            {
+                path: "brands/:brand",
+                element: <Brand/>,
             }
-        ],
-    },
+        ]
+    }
 ]);

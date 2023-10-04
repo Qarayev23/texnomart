@@ -41,7 +41,7 @@ const Products = ({ products, productCount, currentPage, limit, value, handleOpe
                                     onChange={handleOnChange}
                                     isSearchable={false} />
                                 {
-                                    location.pathname.split("/")[1] !== "product-brand" &&
+                                    location.pathname.split("/")[1] !== "brands" &&
                                     <button className={styles.openFilterBar} onClick={handleOpen}>
                                         <FaFilter />
                                         Filter
@@ -61,7 +61,7 @@ const Products = ({ products, productCount, currentPage, limit, value, handleOpe
                     <div className={styles.products__notFound}>
                         Seçiminizə uyğun məhsul tapılmadı.
                         {
-                            location.pathname.split("/")[1] !== "product-brand" &&
+                            location.pathname.split("/")[1] !== "brands" &&
                             <button className={styles.openFilterBar} onClick={handleOpen}>
                                 <FaFilter />
                                 Filter

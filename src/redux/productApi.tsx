@@ -35,7 +35,7 @@ export const productsApi = createApi({
       }
     }),
     product: builder.query<ProductDetailProps, { category: string | undefined, id: string }>({
-      query: ({ category, id }) => `${category}?name=${id}`,
+      query: ({ category, id }) => `${category}?id=${id}`,
       transformResponse: (response: ProductsProps[]) => {
         return {
           ...response[0], monthlyPayment: {

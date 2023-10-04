@@ -83,46 +83,46 @@ export const brandItems = [
     {
         label: "Samsung",
         img: "/img/brands/samsung.png",
-        path: "/product-brand/samsung"
+        path: "/brands/samsung"
     },
     {
         label: "Xiaomi",
         img: "/img/brands/xiaomi.png",
-        path: "/product-brand/xiaomi"
+        path: "/brands/xiaomi"
     },
     {
         label: "Arçelik",
         img: "/img/brands/arcelik.png",
-        path: "/product-brand/arçelik"
+        path: "/brands/arçelik"
     },
     {
         label: "Acer",
         img: "/img/brands/acer.png",
-        path: "/product-brand/acer"
+        path: "/brands/acer"
     },
     {
         label: "HP",
         img: "/img/brands/hp.png",
-        path: "/product-brand/hp"
+        path: "/brands/hp"
     },
     {
         label: "Huawei",
         img: "/img/brands/huawei.png",
-        path: "/product-brand/huawei"
+        path: "/brands/huawei"
     },
     {
         label: "LG",
         img: "/img/brands/lg.png",
-        path: "/product-brand/lg"
+        path: "/brands/lg"
     },
     {
         label: "Beko",
         img: "/img/brands/beko.jpg",
-        path: "/product-brand/beko"
+        path: "/brands/beko"
     },
     {
         label: "Artel",
         img: "/img/brands/artel.jpg",
-        path: "/product-brand/artel"
+        path: "/brands/artel"
     }
 ]

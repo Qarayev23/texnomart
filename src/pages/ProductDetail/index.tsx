@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Params, useNavigate, useParams } from "react-router-dom";
 import Spinner from '../../components/Spinner';
 import { addToBasket } from '../../redux/features/basketSlice';
 import { useProductQuery } from '../../redux/productApi';
@@ -19,10 +19,11 @@ import { FreeMode, Thumbs } from 'swiper/modules';
 import ProductCarousel from '../../components/ProductCarousel';
 
 const ProductDetail = () => {
+  const { id } = useParams<Params>();
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const category = window.location.pathname.split('/')[1]
   const navigate = useNavigate();
-  const { data: product, isLoading, isError } = useProductQuery({ category, id: window.history.state.usr });
+  const { data: product, isLoading, isError } = useProductQuery({ category, id: id! })
   const dispatch = useAppDispatch()
   const [month, setMonth] = useState("sixMonths");
   const { wishlist } = useAppSelector(state => state.wishlistReducer)

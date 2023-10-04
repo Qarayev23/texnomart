@@ -32,9 +32,9 @@ const Compare = () => {
         setData(compare.filter(item => item.category === newValue!.value))
     }
 
-    const { data: nese } = useGetFilterItemsQuery({ category: value?.value! ?? "" });
+    const { data: filterData } = useGetFilterItemsQuery({ category: value?.value! ?? "" });
 
-    const filterItems = nese?.filterItems.map(item => item[0])
+    const filterItems = filterData?.filterItems.map(item => item[0])
 
     return (
         <section className={styles.compare}>
