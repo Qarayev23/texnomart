@@ -3,7 +3,7 @@ import { GetFilterItemsProps, InfoProps, ProductDetailProps, ProductsProps, Root
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://texnomart-db-c49524c88c8a.herokuapp.com/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://gleaming-wasp-cuff-links.cyclic.app/" }),
   tagTypes: ['Products'],
   endpoints: (builder) => ({
     products: builder.query<RootProductsProps, { category: string | undefined, q: string }>({
