@@ -6,6 +6,7 @@ import Info from "../../components/Info";
 import PaginationComp from "../../components/Pagination";
 import { useState } from "react";
 import Spinner from "../../components/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const Brand = () => {
     const { brand } = useParams<Params>()
@@ -58,7 +59,10 @@ const Brand = () => {
 
     return (
         <>
-            <Info category={brand!}/>
+            <Helmet>
+                <title>{brand?.toUpperCase()} - Texnomart</title>
+            </Helmet>
+            <Info category={brand!} />
             <section className="products">
                 <div className="g-container">
                     {

@@ -3,20 +3,25 @@ import { increase, decrease, clearBaket, removeFromBasket } from '../../redux/fe
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { FaLongArrowAltLeft, FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 import styles from './basket.module.scss';
+import { Helmet } from 'react-helmet-async';
 
 const Basket = () => {
-        const dispatch = useAppDispatch()
-        const { basket } = useAppSelector(state => state.basketReducer)
-        
-        const totalPrice = basket.reduce((acc, element) => {
-            return acc + element.price * element.count!
-        }, 0)
+    const dispatch = useAppDispatch()
+    const { basket } = useAppSelector(state => state.basketReducer)
 
-        const totalQuantity = basket.reduce((acc, element) => {
-            return acc + element.count!
-        }, 0)
+    const totalPrice = basket.reduce((acc, element) => {
+        return acc + element.price * element.count!
+    }, 0)
 
-        return (
+    const totalQuantity = basket.reduce((acc, element) => {
+        return acc + element.count!
+    }, 0)
+
+    return (
+        <>
+            <Helmet>
+                <title>Səbət - Texnomart</title>
+            </Helmet>
             <section className={styles.basket}>
                 <div className="g-container">
                     <div className={styles.basket__content}>
@@ -103,7 +108,8 @@ const Basket = () => {
                     </div>
                 </div>
             </section>
-        )
-    }
+        </>
+    )
+}
 
 export default Basket

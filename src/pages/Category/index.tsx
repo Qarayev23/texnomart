@@ -7,6 +7,7 @@ import { useProductsQuery } from "../../redux/productApi";
 import { SingleValue } from "react-select";
 import PaginationComp from "../../components/Pagination";
 import Spinner from "../../components/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const Category = () => {
     const { category } = useParams<Params>();
@@ -68,6 +69,9 @@ const Category = () => {
 
     return (
         <>
+            <Helmet>
+                <title>{category?.replace(/-/g, " ").toUpperCase()} - Texnomart</title>
+            </Helmet>
             <Info category={category!} />
             <section className="products">
                 <div className="g-container">

@@ -21,9 +21,7 @@ function App() {
   }, [compare])
 
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <RouterProvider router={router} />
   )
 }
 
